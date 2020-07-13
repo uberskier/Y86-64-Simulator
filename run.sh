@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./lab5 > student.output
+./lab4 > student.output
 diff instructor.output student.output > diffs
 
 if [ -s diffs ]; then
