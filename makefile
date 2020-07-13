@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -g -c -Wall -std=c++11 -Og
+CFLAGS = -g -c -Wall -std=c++11 -O0
 OBJ = lab4.o MemoryTester.o Memory.o Tools.o RegisterFile.o \
 RegisterFileTester.o ConditionCodes.o ConditionCodesTester.o
 
