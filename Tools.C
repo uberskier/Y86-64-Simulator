@@ -151,28 +151,21 @@ uint64_t Tools::getBits(uint64_t source, int32_t low, int32_t high)
  */
 uint64_t Tools::setBits(uint64_t source, int32_t low, int32_t high)
 {
-   uint64_t num = source;
-   uint64_t range = 0; 
-   if (low > 63 || high > 63 || high == 0) {
-      if (low == 0) {
-         return num |= 1;
-      }
-      else {
-       return source;  
-      } 
+   if (low == high) {
+      source = 1 << low;
+      return source;
    }
-   else{
-      if (high == 63 && low == 0){
-      num |= 0xffffffffffffffff;
-      }
-      else {
-         range = ((1ull << (high-low + 1ull))-1ull) << low;
-         //printf("range:Ox%" PRIx64 "\n", range);
-         num |= range;
-         //printf("final:Ox%" PRIx64 "\n", num);  
-      }
-   }
-   return num;
+   if (low < 0 || high > 63 || ((high - low) < 0)){
+        return source;
+    }
+    uint64_t answer;
+    int dif = high - low;
+    high = 62;
+    uint64_t test1 = ((1 << (high + 1)) - 1);
+    test1 = (test1 >> (63-dif));
+    test1 = test1 << low;
+    answer = source | test1; 
+    return answer;
 }
 
 /**
@@ -251,8 +244,16 @@ uint64_t Tools::clearBits(uint64_t source, int32_t low, int32_t high)
 uint64_t Tools::copyBits(uint64_t source, uint64_t dest, 
                          int32_t srclow, int32_t dstlow, int32_t length)
 {
-   
-   return 0;
+    if (length > 64 || srclow < 0 || dstlow < 0 || length < 0 || srclow > 63 || dstlow > 63 || (length + dstlow) > 64) {
+        return dest;
+    }
+    dest = clearBits(dest, dstlow, (dstlow + length - 1));
+    
+    source = getBits(source, srclow, (srclow + length - 1));
+    
+    source = source << dstlow;
+    dest = dest | source;
+    return dest;
 }
 
 /**
