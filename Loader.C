@@ -36,6 +36,10 @@ Loader::Loader(int argc, char * argv[])
    //with a .yo and whether the file successfully opens; if not, return without 
    //loading)
 
+   if (!Loader::fileCheck(argv[1])) {
+      return;
+   }
+
    //The file handle is declared in Loader.h.  You should use that and
    //not declare another one in this file.
    
@@ -73,3 +77,29 @@ bool Loader::isLoaded()
 //You'll need to add more helper methods to this file.  Don't put all of your code in the
 //Loader constructor.  When you add a method here, add the prototype to Loader.h in the private
 //section.
+
+/**
+ * fileCheck
+ * returns the flag if file ends with .yo 
+ *
+ * @param file 
+ *
+ * @return value if .yo file (true or false)
+ */
+bool Loader::fileCheck(char * file) 
+{
+   std::string str(file);
+   if (str.substr(str.find_last_of(".") + 1) == "yo") {
+      inf.open(str);
+      if (inf.is_open()){
+        inf.close();
+        return true; 
+      }
+      else {
+         return false;
+      }
+   }
+   else {
+      return false;
+   }
+}
