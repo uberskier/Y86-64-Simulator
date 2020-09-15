@@ -35,11 +35,24 @@ Loader::Loader(int argc, char * argv[])
    //Start by writing a method that opens the file (checks whether it ends 
    //with a .yo and whether the file successfully opens; if not, return without 
    //loading)
+   if (argc != 2) {
+      return;
+   }
 
    if (!Loader::fileCheck(argv[1])) {
       return;
    }
 
+   std::string str(argv[1]);
+   inf.open(str); 
+
+   char c = inf.get();
+
+   while (inf.good()) {
+      std::cout << c;
+      c = inf.get();
+   }
+   inf.close(); 
    //The file handle is declared in Loader.h.  You should use that and
    //not declare another one in this file.
    
