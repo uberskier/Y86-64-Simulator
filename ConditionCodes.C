@@ -3,6 +3,11 @@
 #include "ConditionCodes.h"
 #include "Tools.h"
 
+/**
+ * Zack Noble
+ * Baylor Matney
+ *
+*///
 //cc_instance will be initialized to reference the single 
 //instance of ConditionCodes
 ConditionCodes * ConditionCodes::ccInstance = NULL;
@@ -13,7 +18,7 @@ ConditionCodes * ConditionCodes::ccInstance = NULL;
  */
 ConditionCodes::ConditionCodes()
 {
-
+   codes = 0;
 }
 
 /**
@@ -26,7 +31,10 @@ ConditionCodes::ConditionCodes()
  */
 ConditionCodes * ConditionCodes::getInstance()
 {
-   return NULL;
+   if (ccInstance == NULL) {
+      ccInstance = new ConditionCodes();
+   }
+   return ccInstance;
 }
 
 /*
@@ -44,7 +52,15 @@ bool ConditionCodes::getConditionCode(int32_t ccNum, bool & error)
 {
    //Use your getBits in Tools.C.
    //Don't use "magic" numbers.
-   return false;
+   uint32_t codeNum = Tools::getBits(codes, ccNum, ccNum);
+   if (ccNum == OF || ccNum == SF || ccNum == ZF) {
+      //if (codeNum == false) {
+         error = false;
+         return codeNum;
+      //}
+   }
+   error = true;
+   return codeNum;
 }
 
 /*
@@ -62,9 +78,23 @@ bool ConditionCodes::getConditionCode(int32_t ccNum, bool & error)
 void ConditionCodes::setConditionCode(bool value, int32_t ccNum, 
                                       bool & error)
 {
+   
    //Use your setBits and clearBits in Tools.C. 
    //Don't use "magic" numbers in your code.
-   return;
+   //uint32_t codeNum = Tools::getBits(codes, ccNum, ccNum);
+   if (ccNum == OF || ccNum == SF || ccNum == ZF) {
+      if (value == true) {
+         codes = Tools::clearBits(codes, ccNum, ccNum);
+         codes = Tools::setBits(codes, ccNum, ccNum);
+      }
+      else {
+         codes = Tools::clearBits(codes, ccNum, ccNum);
+      }
+      error = false;
+   }
+   else {
+      error = true;
+   }
 }
 
 /*

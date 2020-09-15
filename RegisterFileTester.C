@@ -3,6 +3,12 @@
 #include "RegisterFile.h"
 #include "RegisterFileTester.h"
 
+/**
+ * Zack Noble
+ * Baylor Matney
+ *
+*/
+
 /** 
  * RegisterFileTester constructor
  * Initializes the RegisterFile instance 

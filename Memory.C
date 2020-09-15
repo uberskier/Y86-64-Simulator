@@ -3,6 +3,12 @@
 #include "Memory.h"
 #include "Tools.h"
 
+/**
+ * Zack Noble
+ * Baylor Matney
+ *
+*/
+
 //memInstance will be initialized to the single instance
 //of the Memory class
 Memory * Memory::memInstance = NULL;
@@ -13,6 +19,7 @@ Memory * Memory::memInstance = NULL;
  */
 Memory::Memory()
 {
+   mem[MEMSIZE] = 0;
 }
 
 /**
@@ -24,7 +31,10 @@ Memory::Memory()
  */
 Memory * Memory::getInstance()
 {
-   return NULL;
+   if (memInstance == NULL) {
+      memInstance = new Memory();
+   }
+   return memInstance;
 }
 
 /**
@@ -40,6 +50,22 @@ Memory * Memory::getInstance()
  */
 uint64_t Memory::getLong(int32_t address, bool & imem_error)
 {
+   uint64_t num = 0;
+   int max = address + 7;
+   if ((address % 8) == 0 && address >= 0 && address < MEMSIZE) {    
+   for (int i = 0; i < 8; i++) {
+      if (i != max-address) {
+         num += mem[max-i];
+         num = num << 8;
+      }
+      else {
+         num += mem[max-i];
+      }
+   }
+   imem_error = false;
+   return num;
+   }
+   imem_error = true;
    return 0;
 }
 
@@ -55,6 +81,11 @@ uint64_t Memory::getLong(int32_t address, bool & imem_error)
  */
 uint8_t Memory::getByte(int32_t address, bool & imem_error)
 {
+   if (address >= 0 && address < MEMSIZE) {
+         imem_error = false;
+         return mem[address];
+   }
+   imem_error = true;
    return 0;
 }
 
@@ -71,7 +102,20 @@ uint8_t Memory::getByte(int32_t address, bool & imem_error)
  */
 void Memory::putLong(uint64_t value, int32_t address, bool & imem_error)
 {
-   return;
+   if ((address % 8) == 0 && address >= 0 && address < MEMSIZE) {
+      for (int i = 0; i < 8; i++) {
+         if (i != address) {
+            mem[address + i] = Tools::getByte(value, i);
+         }
+         else {
+            mem[address] = Tools::getByte(value, i);
+         }
+         imem_error = false;
+      }
+   }
+   else {
+      imem_error = true;
+   }
 }
 
 /**
@@ -87,7 +131,13 @@ void Memory::putLong(uint64_t value, int32_t address, bool & imem_error)
 
 void Memory::putByte(uint8_t value, int32_t address, bool & imem_error)
 {
-   return;
+   if (address >= 0 && address < MEMSIZE) {
+      imem_error = false;
+      mem[address] = value;
+   }
+   else {
+      imem_error = true;
+   }
 }
 
 /**
