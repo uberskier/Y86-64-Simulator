@@ -46,11 +46,16 @@ Loader::Loader(int argc, char * argv[])
    std::string str(argv[1]);
    inf.open(str); 
 
-   char c = inf.get();
+
+   std::string line;
+   std::getline (inf, line);
 
    while (inf.good()) {
-      std::cout << c;
-      c = inf.get();
+      //std::cout << line << "\n";
+      if (line.at(DATABEGIN) != ' ') {
+         Loader::loadline(line);
+      }
+      std::getline (inf, line);
    }
    inf.close(); 
    //The file handle is declared in Loader.h.  You should use that and
@@ -115,4 +120,33 @@ bool Loader::fileCheck(char * file)
    else {
       return false;
    }
+}
+
+void Loader::loadline(std::string line)
+{
+   int32_t address = Loader::convert(line, ADDRBEGIN, ADDREND);
+   int64_t value  = Loader::convert64(line, DATABEGIN, COMMENT - 1);
+
+   printf ("%d  %ld\n", address, value);
+}
+
+int32_t Loader::convert(std::string line, int b, int e)
+{
+   std::string add;
+   add.append(line, e, b);
+   //std::cout << line << "\n";
+   return std::stoul(add, NULL, 16);
+}
+
+int64_t Loader::convert64(std::string line, int be, int en)
+{
+   //std::cout << line << "\n";
+   std::string val;
+   for (int x = be; x <= en; x++) {
+      if (line.substr(x, 1) != " ") {
+         val.append(line, x, 1);
+      }
+   }
+   std::cout << val << "\n";
+   return std::stoul(val, nullptr, 16);
 }
