@@ -125,29 +125,33 @@ bool Loader::fileCheck(char * file)
 
 void Loader::loadline(std::string line)
 {
-   int32_t address = Loader::convert(line, ADDRBEGIN, ADDREND);
-   int64_t value  = Loader::convert64(line, DATABEGIN, COMMENT - 1);
+   uint32_t address = Loader::convert(line, ADDRBEGIN, 3);
 
-   printf ("%d  %ld\n", address, value);
+   uint8_t tempval = 0; 
+
+   //bool error;
+
+   for (int i = 7; i < 28; i+=2) {
+      if (line.substr(i,1) != " ") {
+        tempval = Loader::convert8(line, 2, i);
+        //mem.putByte(tempval, address, error);
+      }
+      printf ("add: %x  1: %x \n", address, tempval);
+   }
+
+   
 }
 
-int32_t Loader::convert(std::string line, int b, int e)
+uint32_t Loader::convert(std::string line, int b, int e)
 {
    std::string add;
    add.append(line, e, b);
-   //std::cout << line << "\n";
    return std::stoul(add, NULL, 16);
 }
 
-int64_t Loader::convert64(std::string line, int be, int en)
+uint8_t Loader::convert8(std::string line, int be, int en)
 {
-   //std::cout << line << "\n";
    std::string val;
-   for (int x = be; x <= en; x++) {
-      if (line.substr(x, 1) != " ") {
-         val.append(line, x, 1);
-      }
-   }
-   std::cout << val << "\n";
-   return std::stoul(val, nullptr, 16);
+   val.append(line, en, be);
+   return std::stoul(val, NULL, 16);
 }
