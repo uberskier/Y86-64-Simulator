@@ -55,7 +55,7 @@ Loader::Loader(int argc, char * argv[])
 
    while (inf.good()) {
       //std::cout << line << "\n";
-      if (line.at(DATABEGIN) != ' ') {
+      if (line.substr(DATABEGIN,1) != " ") {
          Loader::loadline(line);
       }
       std::getline (inf, line);
@@ -138,24 +138,23 @@ void Loader::loadline(std::string line)
    uint64_t test2 = 0;
 
    for (int i = 7; i < 28; i+=2) {
+      tempval = 0; 
       if (line.substr(i,1) != " ") {
         tempval = Loader::convert8(line, 2, i);
-        
-        
+        mem->putByte(tempval, test, error); 
       }
-      mem->putByte(tempval, test, error);
-      
+      //printf("%x ------- %x\n", test, tempval);      
       test++;
    }
       test2 = mem->getLong(address, error);
-      printf("%x   %lx   %x\n", test, test2, tempval);
+      
    
 }
 
 uint32_t Loader::convert(std::string line, int b, int e)
 {
    std::string add;
-   add.append(line, e, b);
+   add.append(line, b, e);
    return std::stoul(add, NULL, 16);
 }
 
