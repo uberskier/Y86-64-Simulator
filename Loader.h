@@ -8,6 +8,7 @@ class Loader
       void loadline(std::string line);
       uint8_t convert8(std::string line, int b, int e);
       std::ifstream inf;  //input file handle
+      //Memory * mem;
    public:
       Loader(int argc, char * argv[]);
       bool isLoaded();

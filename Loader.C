@@ -16,6 +16,8 @@
 #define DATABEGIN 7   //starting column of data bytes
 #define COMMENT 28    //location of the '|' character 
 
+Memory * mem = Memory::getInstance();
+
 /**
  * Loader constructor
  * Opens the .yo file named in the command line arguments, reads the contents of the file
@@ -31,6 +33,7 @@
 Loader::Loader(int argc, char * argv[])
 {
    loaded = false;
+   
 
    //Start by writing a method that opens the file (checks whether it ends 
    //with a .yo and whether the file successfully opens; if not, return without 
@@ -129,16 +132,23 @@ void Loader::loadline(std::string line)
 
    uint8_t tempval = 0; 
 
-   //bool error;
+   bool error;
+
+   uint32_t test = address;
+   uint64_t test2 = 0;
 
    for (int i = 7; i < 28; i+=2) {
       if (line.substr(i,1) != " ") {
         tempval = Loader::convert8(line, 2, i);
-        //mem.putByte(tempval, address, error);
+        
+        
       }
-      printf ("add: %x  1: %x \n", address, tempval);
+      mem->putByte(tempval, test, error);
+      
+      test++;
    }
-
+      test2 = mem->getLong(address, error);
+      printf("%x   %lx   %x\n", test, test2, tempval);
    
 }
 
