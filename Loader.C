@@ -53,6 +53,7 @@ Loader::Loader(int argc, char * argv[])
       c = inf.get();
    }
    inf.close(); 
+   
    //The file handle is declared in Loader.h.  You should use that and
    //not declare another one in this file.
    
