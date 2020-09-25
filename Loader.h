@@ -7,8 +7,16 @@ class Loader
       uint32_t convert(std::string line, int b, int e);
       void loadline(std::string line);
       uint8_t convert8(std::string line, int b, int e);
+      bool hasErrors(std::string line);
+      bool hasColon(std::string line);
+      bool hasBar(std::string line);
+      bool hasMultTwo(std::string line);
+      bool hasData(std::string line);
+      bool hasX(std::string line);
+      bool hasZero(std::string line);
+      bool hasNoSpace(std::string line);
+      bool hasExtraSpace(std::string line);
       std::ifstream inf;  //input file handle
-      //Memory * mem;
    public:
       Loader(int argc, char * argv[]);
       bool isLoaded();

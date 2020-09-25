@@ -1,6 +1,6 @@
 /**
- * Names:
- * Team:
+ * Names: Zack Noble & Baylor Matney
+ * Team: matney-noble
 */
 #include <iostream>
 #include <fstream>
@@ -52,13 +52,22 @@ Loader::Loader(int argc, char * argv[])
 
    std::string line;
    std::getline (inf, line);
+   int lineNumber = 1;
 
    while (inf.good()) {
       //std::cout << line << "\n";
+      if (line.substr(0,1) != " ") {
+         if (hasErrors(line)) {
+            std::cout << "Error on line " << std::dec << lineNumber
+                     << ": " << line << std::endl;
+            return;
+         }
+      }
       if (line.substr(DATABEGIN,1) != " ") {
          Loader::loadline(line);
       }
       std::getline (inf, line);
+      lineNumber++;
    }
    inf.close(); 
    
@@ -134,21 +143,15 @@ void Loader::loadline(std::string line)
 
    bool error;
 
-   uint32_t test = address;
-   uint64_t test2 = 0;
-
    for (int i = 7; i < 28; i+=2) {
       tempval = 0; 
       if (line.substr(i,1) != " ") {
         tempval = Loader::convert8(line, 2, i);
-        mem->putByte(tempval, test, error); 
+        mem->putByte(tempval, address, error); 
       }
       //printf("%x ------- %x\n", test, tempval);      
-      test++;
+      address++;
    }
-      test2 = mem->getLong(address, error);
-      
-   
 }
 
 uint32_t Loader::convert(std::string line, int b, int e)
@@ -164,3 +167,88 @@ uint8_t Loader::convert8(std::string line, int be, int en)
    val.append(line, en, be);
    return std::stoul(val, NULL, 16);
 }
+
+bool Loader::hasErrors(std::string line) {
+   if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line)) {
+      return true;
+   }
+   return false;
+}
+
+bool Loader::hasColon(std::string line) {
+   if (line.substr(5,1) != ":") {
+      return true;
+   }
+   return false;
+}
+
+bool Loader::hasBar(std::string line) {
+   if (line.substr(COMMENT,1) != "|") {
+      return true;
+   }
+   return false;
+}
+
+bool Loader::hasMultTwo(std::string line) {
+   int length = 0;
+   for (int i = 7; i < 28; i++) { 
+      if (line.substr(i,1) != " ") { 
+         length++;
+      }   
+   }
+   if (length % 2 != 0) {
+      return true;
+   }
+   return false;
+}
+
+
+bool Loader::hasData(std::string line)
+{
+    for (int x = DATABEGIN; x < 27; x++) {
+       int y = line.at(x);
+        if(!(isxdigit(y)) && line.substr(x, 1) != " ") {
+            return true;
+        }
+    }
+    for (int x = ADDRBEGIN; x <= ADDREND; x++) {
+       int z = line.at(x);
+        if(!(isxdigit(z))) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Loader::hasX(std::string line) 
+{
+    if (line.substr(1, 1) != "x") {
+        return true;
+    }
+    return false;
+}
+
+bool Loader::hasZero(std::string line) 
+{
+    if (line.substr(0, 1) != "0") {
+        return true;
+    }
+    return false;
+}
+
+bool Loader::hasNoSpace(std::string line) 
+{
+    if (line.substr(6, 1) != " " ) {
+        return true;
+    }
+    return false;
+}
+
+bool Loader::hasExtraSpace(std::string line) 
+{
+    if (line.substr(6, 1) != " " && !(isxdigit(line.at(7)))) {
+        return true;
+    }
+    return false;
+}
+
