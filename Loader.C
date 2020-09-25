@@ -17,7 +17,8 @@
 #define COMMENT 28    //location of the '|' character 
 
 Memory * mem = Memory::getInstance();
-
+uint32_t addresses[200];
+int totalAdd = 0;
 /**
  * Loader constructor
  * Opens the .yo file named in the command line arguments, reads the contents of the file
@@ -33,7 +34,6 @@ Memory * mem = Memory::getInstance();
 Loader::Loader(int argc, char * argv[])
 {
    loaded = false;
-   
 
    //Start by writing a method that opens the file (checks whether it ends 
    //with a .yo and whether the file successfully opens; if not, return without 
@@ -138,7 +138,8 @@ bool Loader::fileCheck(char * file)
 void Loader::loadline(std::string line)
 {
    uint32_t address = Loader::convert(line, ADDRBEGIN, 3);
-
+   addresses[totalAdd] = address;
+   totalAdd++;
    uint8_t tempval = 0; 
 
    bool error;
@@ -169,7 +170,7 @@ uint8_t Loader::convert8(std::string line, int be, int en)
 }
 
 bool Loader::hasErrors(std::string line) {
-   if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line)) {
+   if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line) || hasCons(line) || hasBadAdd(line) || hasNoCom(line)) {
       return true;
    }
    return false;
@@ -205,7 +206,7 @@ bool Loader::hasMultTwo(std::string line) {
 
 bool Loader::hasData(std::string line)
 {
-    for (int x = DATABEGIN; x < 27; x++) {
+    for (int x = DATABEGIN; x < 28; x++) {
        int y = line.at(x);
         if(!(isxdigit(y)) && line.substr(x, 1) != " ") {
             return true;
@@ -252,3 +253,44 @@ bool Loader::hasExtraSpace(std::string line)
     return false;
 }
 
+bool Loader::hasCons(std::string line)
+{
+   int tem = 0;
+    for (int x = DATABEGIN; x < 28; x++) {
+       int y = line.at(x);
+        if (line.substr(x, 1) == " ") {
+           tem++;
+        }
+        if((isxdigit(y))) {
+            if (tem > 0) {
+               return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool Loader::hasBadAdd(std::string line)
+{
+   uint32_t y = Loader::convert(line, ADDRBEGIN, 3);
+   bool error;
+   for (int x = 0; x < totalAdd; x++){
+      if ((mem->getByte(y, error) > addresses[x])) {
+         return true;
+      }
+   }
+   return false;
+}
+
+bool Loader::hasNoCom(std::string line)
+{
+   if (line.substr(0, 1) != " ") {
+      for (int x = 29; x < 36; x++) {
+         if (line.substr(x, 1) != " ") {
+            return false;
+         }
+      }
+      return true;
+   }
+   return false;
+}

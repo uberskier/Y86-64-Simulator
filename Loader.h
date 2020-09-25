@@ -16,6 +16,9 @@ class Loader
       bool hasZero(std::string line);
       bool hasNoSpace(std::string line);
       bool hasExtraSpace(std::string line);
+      bool hasCons(std::string line);
+      bool hasBadAdd(std::string line);
+      bool hasNoCom(std::string line);
       std::ifstream inf;  //input file handle
    public:
       Loader(int argc, char * argv[]);
