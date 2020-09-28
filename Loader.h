@@ -19,6 +19,8 @@ class Loader
       bool hasCons(std::string line);
       bool hasBadAdd(std::string line);
       bool hasNoCom(std::string line);
+      bool validAddress(std::string line);
+      bool outsideMem(std::string line);
       std::ifstream inf;  //input file handle
    public:
       Loader(int argc, char * argv[]);

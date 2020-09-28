@@ -17,7 +17,7 @@
 #define COMMENT 28    //location of the '|' character 
 
 Memory * mem = Memory::getInstance();
-uint32_t addresses[200];
+uint32_t addresses[0x1000];
 int totalAdd = 0;
 /**
  * Loader constructor
@@ -56,13 +56,11 @@ Loader::Loader(int argc, char * argv[])
 
    while (inf.good()) {
       //std::cout << line << "\n";
-      if (line.substr(0,1) != " ") {
          if (hasErrors(line)) {
             std::cout << "Error on line " << std::dec << lineNumber
                      << ": " << line << std::endl;
             return;
          }
-      }
       if (line.substr(DATABEGIN,1) != " ") {
          Loader::loadline(line);
       }
@@ -138,8 +136,6 @@ bool Loader::fileCheck(char * file)
 void Loader::loadline(std::string line)
 {
    uint32_t address = Loader::convert(line, ADDRBEGIN, 3);
-   addresses[totalAdd] = address;
-   totalAdd++;
    uint8_t tempval = 0; 
 
    bool error;
@@ -149,6 +145,8 @@ void Loader::loadline(std::string line)
       if (line.substr(i,1) != " ") {
         tempval = Loader::convert8(line, 2, i);
         mem->putByte(tempval, address, error); 
+        addresses[totalAdd] = address;
+        totalAdd++;
       }
       //printf("%x ------- %x\n", test, tempval);      
       address++;
@@ -170,8 +168,15 @@ uint8_t Loader::convert8(std::string line, int be, int en)
 }
 
 bool Loader::hasErrors(std::string line) {
-   if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line) || hasCons(line) || hasBadAdd(line) || hasNoCom(line)) {
-      return true;
+   if (line.substr(0,1) != " ") {
+      if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line) || hasCons(line) || hasBadAdd(line) || hasNoCom(line) || outsideMem(line)) {
+         return true;
+      }
+   }
+   else {
+      if (hasBar(line) || validAddress(line)) {
+         return true;
+      }
    }
    return false;
 }
@@ -273,9 +278,9 @@ bool Loader::hasCons(std::string line)
 bool Loader::hasBadAdd(std::string line)
 {
    uint32_t y = Loader::convert(line, ADDRBEGIN, 3);
-   bool error;
+   //bool error;
    for (int x = 0; x < totalAdd; x++){
-      if ((mem->getByte(y, error) > addresses[x])) {
+      if ((y < addresses[x])) {
          return true;
       }
    }
@@ -290,6 +295,28 @@ bool Loader::hasNoCom(std::string line)
             return false;
          }
       }
+      return true;
+   }
+   return false;
+}
+
+bool Loader::validAddress(std::string line)
+{
+   if(line.substr(7, 1) != " ") {
+      return true;
+   } 
+   return false;
+}
+
+bool Loader::outsideMem(std::string line) {
+   uint32_t y = Loader::convert(line, ADDRBEGIN, 3);
+
+   for (int i = 7; i < 28; i+=2) {
+      if (line.substr(i,1) != " ") {
+         y++;
+      } 
+   }
+   if (y > 0x1000) {
       return true;
    }
    return false;
