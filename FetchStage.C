@@ -11,6 +11,9 @@
 #include "FetchStage.h"
 #include "Status.h"
 #include "Debug.h"
+#include "Instructions.h"
+#include "Tools.h"
+#include "Memory.h"
 
 
 /*
@@ -26,7 +29,10 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 {
    F * freg = (F *) pregs[FREG];
    D * dreg = (D *) pregs[DREG];
-   uint64_t f_pc = 0, icode = 0, ifun = 0, valC = 0, valP = 0;
+   M * mreg = (M *) pregs[MREG];
+   W * wreg = (W *) pregs[WREG];
+
+   uint64_t f_pc = 0, icode = 0, ifun = 0, valC = 0, valP = 0, c_pc = 0;
    uint64_t rA = RNONE, rB = RNONE, stat = SAOK;
 
    //code missing here to select the value of the PC
@@ -35,6 +41,15 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    //rA, rB, and valC to be set.
    //The lab assignment describes what methods need to be
    //written.
+   bool error;
+   f_pc = selectPC(freg, mreg, wreg);
+   Memory * mem = Memory::getInstance();
+   uint64_t iCodeiFun = mem->getByte(f_pc, error);
+   icode = Tools::getBits(iCodeiFun, 4 , 7);
+   
+   
+
+   
 
    //The value passed to setInput below will need to be changed
    freg->getpredPC()->setInput(f_pc + 1);
@@ -90,4 +105,26 @@ void FetchStage::setDInput(D * dreg, uint64_t stat, uint64_t icode,
    dreg->getvalC()->setInput(valC);
    dreg->getvalP()->setInput(valP);
 }
-     
+
+uint64_t FetchStage::selectPC(F * freg, M * mreg, W * wreg) {
+   uint64_t m_icode = mreg->geticode()->getOutput(), w_icode = wreg->geticode()->getOutput(), m_Cnd = mreg->getCnd()->getOutput(),
+                      m_valA = mreg->getvalA()->getOutput(), w_valM = wreg->getvalM()->getOutput();
+   
+
+   if (m_icode == IJXX && !m_Cnd) {
+      return m_valA;
+   }
+   if (w_icode == IRET){
+      return w_valM;
+   }
+   return freg->getpredPC()->getOutput();
+   
+}
+ 
+uint64_t FetchStage::predictPC(uint64_t f_icode, uint64_t f_valC, uint64_t f_valP) {
+   if (f_icode == IJXX || f_icode == ICALL) {
+      return f_valC;
+   }
+   return f_valP;
+}
+

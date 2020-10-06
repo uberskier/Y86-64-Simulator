@@ -21,14 +21,14 @@ DecodeStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h E.h Stage
 E.o: Instructions.h RegisterFile.h PipeReg.h PipeRegField.h E.h Status.h 
 ExecuteStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h E.h Stage.h ExecuteStage.h Status.h Debug.h
 F.o: Instructions.h RegisterFile.h PipeReg.h PipeRegField.h F.h Status.h 
-FetchStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h Stage.h FetchStage.h Status.h Debug.h
+FetchStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h Stage.h FetchStage.h Status.h Debug.h Instructions.h Tools.h Memory.h
 M.o: Instructions.h RegisterFile.h PipeReg.h PipeRegField.h M.h Status.h 
 MemoryStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h Stage.h MemoryStage.h Status.h Debug.h
 PipeReg.o: PipeReg.h
 PipeRegField.o: PipeRegField.h
 Simulate.o: PipeReg.h PipeRegField.h F.h D.h M.h W.h Stage.h ExecuteStage.h MemoryStage.h FetchStage.h DecodeStage.h WritebackStage.h Simulate.h Memory.h RegisterFile.h ConditionCodes.h
 W.o: Instructions.h RegisterFile.h PipeReg.h PipeRegField.h W.h Status.h 
-WritebackStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h Stage.h WritebackStage.h Status.h Debug.h
+WritebackStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h Stage.h WritebackStage.h Status.h Debug.h Instructions.h
 clean:
 	rm $(OBJ) yess
 
