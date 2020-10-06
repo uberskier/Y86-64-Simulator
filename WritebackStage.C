@@ -15,7 +15,7 @@
 
 bool WritebackStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 {
-   return false;
+   return true;
 }
 
 void WritebackStage::doClockHigh(PipeReg ** pregs)

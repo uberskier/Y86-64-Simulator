@@ -28,6 +28,9 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    dreg->geticode()->setInput(icode);
    dreg->getifun()->setInput(ifun);
    dreg->getvalC()->setInput(valC);
+   dreg->getvalP()->setInput(valP);
+   dreg->getrA()->setInput(rA);
+   dreg->getrB()->setInput(rB);
    
    setEInput(ereg, stat, icode, ifun, valC, valA, valB, dstE, dstM, srcA, srcB);
    return false;
