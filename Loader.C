@@ -17,8 +17,7 @@
 #define COMMENT 28    //location of the '|' character 
 
 Memory * mem = Memory::getInstance();
-//uint32_t addresses[0x1000];
-int totalAdd = 0;
+uint32_t addresses;
 /**
  * Loader constructor
  * Opens the .yo file named in the command line arguments, reads the contents of the file
@@ -145,8 +144,7 @@ void Loader::loadline(std::string line)
       if (line.substr(i,1) != " ") {
         tempval = Loader::convert8(line, 2, i);
         mem->putByte(tempval, address, error); 
-        //addresses[totalAdd] = address;
-        totalAdd++;
+        addresses = address;
       }
       //printf("%x ------- %x\n", test, tempval);      
       address++;
@@ -169,7 +167,7 @@ uint8_t Loader::convert8(std::string line, int be, int en)
 
 bool Loader::hasErrors(std::string line) {
    if (line.substr(0,1) != " ") {
-      if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line) || hasCons(line)  || hasNoCom(line) || outsideMem(line)) {
+      if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line) || hasCons(line) || hasBadAdd(line)  || hasNoCom(line) || outsideMem(line)) {
          return true;
       }
    }
@@ -274,18 +272,16 @@ bool Loader::hasCons(std::string line)
     }
     return false;
 }
-/**
+
 bool Loader::hasBadAdd(std::string line)
 {
    uint32_t y = Loader::convert(line, ADDRBEGIN, 3);
    //bool error;
-   for (int x = 0; x < totalAdd; x++){
-      if ((y < addresses[x])) {
-         return true;
-      }
+   if ((y < addresses)) {
+      return true;
    }
    return false;
-}*/
+}
 
 bool Loader::hasNoCom(std::string line)
 {
