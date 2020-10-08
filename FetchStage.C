@@ -25,6 +25,7 @@
  * @param: stages - array of stages (FetchStage, DecodeStage, ExecuteStage,
  *         MemoryStage, WritebackStage instances)
  */
+ 
 bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 {
    F * freg = (F *) pregs[FREG];
@@ -46,16 +47,49 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    Memory * mem = Memory::getInstance();
    uint64_t iCodeiFun = mem->getByte(f_pc, error);
    icode = Tools::getBits(iCodeiFun, 4 , 7);
+   ifun = Tools::getBits(iCodeiFun, 0 , 3);
    
+   /**
+   if (needRegIds(icode)) {
+      uint64_t regs = mem->getByte(f_pc + 1, error);
+      rA = Tools::getBits(regs, 4, 7);
+      rB = Tools::getBits(regs, 0, 3);
+   }*/
+   /**
+   if(needValC(icode)){
+      if (needRegIds(icode)) {
+         uint64_t regval = mem->getByte(f_pc + 2, error);
+         valC = regval;
+         for (int x = 3; x < 8; x++) {
+            regval = mem->getByte(f_pc + x, error);
+            if (!error) {
+               valC = valC << 8;
+               valC += regval;
+            }
+         }
+      }
+      else {
+         uint64_t valDest = mem->getByte(f_pc + 1, error);
+         valC = valDest;
+         for (int x = 2; x < 8; x++) {
+            valDest = mem->getByte(f_pc + x, error);
+            if (!error) {
+               valC = valC<< 8;
+               valC += valDest;
+            }
+         }
+      }
+   }*/
    
-
-   
-
+   bool needReg = needRegIds(icode);
+   bool needVal = needValC(icode);
+   valP = PCincrement(f_pc, needReg, needVal);
    //The value passed to setInput below will need to be changed
-   freg->getpredPC()->setInput(f_pc + 1);
+   freg->getpredPC()->setInput(predictPC(icode, valC, valP));
 
    //provide the input values for the D register
    setDInput(dreg, stat, icode, ifun, rA, rB, valC, valP);
+   
    return false;
 }
 
@@ -128,3 +162,24 @@ uint64_t FetchStage::predictPC(uint64_t f_icode, uint64_t f_valC, uint64_t f_val
    return f_valP;
 }
 
+
+bool FetchStage::needRegIds(uint64_t icode){
+   return (icode == IRRMOVQ || icode == IOPQ || icode == IPUSHQ || icode == IPOPQ || icode == IIRMOVQ || icode == IRMMOVQ || icode == IMRMOVQ);
+}
+
+
+bool FetchStage::needValC(uint64_t icode){
+   return (icode == IIRMOVQ || icode == IRMMOVQ || icode == IMRMOVQ || icode == IJXX || icode == ICALL);
+}
+
+uint64_t FetchStage::PCincrement(uint64_t f_pc, bool needReg, bool needVal) {
+   if (needReg) {
+      if (needVal) {
+         return f_pc + 10;
+      }
+   }
+   if (needVal) {
+      return f_pc + 9;
+   }
+   return f_pc + 1;
+}

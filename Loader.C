@@ -17,7 +17,7 @@
 #define COMMENT 28    //location of the '|' character 
 
 Memory * mem = Memory::getInstance();
-uint32_t addresses[0x1000];
+//uint32_t addresses[0x1000];
 int totalAdd = 0;
 /**
  * Loader constructor
@@ -145,7 +145,7 @@ void Loader::loadline(std::string line)
       if (line.substr(i,1) != " ") {
         tempval = Loader::convert8(line, 2, i);
         mem->putByte(tempval, address, error); 
-        addresses[totalAdd] = address;
+        //addresses[totalAdd] = address;
         totalAdd++;
       }
       //printf("%x ------- %x\n", test, tempval);      
@@ -169,7 +169,7 @@ uint8_t Loader::convert8(std::string line, int be, int en)
 
 bool Loader::hasErrors(std::string line) {
    if (line.substr(0,1) != " ") {
-      if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line) || hasCons(line) || hasBadAdd(line) || hasNoCom(line) || outsideMem(line)) {
+      if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line) || hasCons(line)  || hasNoCom(line) || outsideMem(line)) {
          return true;
       }
    }
@@ -274,7 +274,7 @@ bool Loader::hasCons(std::string line)
     }
     return false;
 }
-
+/**
 bool Loader::hasBadAdd(std::string line)
 {
    uint32_t y = Loader::convert(line, ADDRBEGIN, 3);
@@ -285,7 +285,7 @@ bool Loader::hasBadAdd(std::string line)
       }
    }
    return false;
-}
+}*/
 
 bool Loader::hasNoCom(std::string line)
 {
