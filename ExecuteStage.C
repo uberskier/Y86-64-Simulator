@@ -21,19 +21,19 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    //dreg values
    uint64_t dstE = RNONE, dstM = RNONE, valE = 0, Cnd = 0;
    //ereg values
-   uint64_t icode = 0, ifun = 0, valC = 0, valA = 0, valB = 0;
-   uint64_t stat = SAOK, srcA = RNONE, srcB = RNONE;
+   uint64_t icode = 0, valA = 0;
+   uint64_t stat = SAOK;
 
    stat = ereg->getstat()->getOutput();
    icode = ereg->geticode()->getOutput();
-   ifun = ereg->getifun()->getOutput();
+
    valA = ereg->getvalA()->getOutput();
    dstE = ereg->getdstE()->getOutput();
    dstM = ereg->getdstM()->getOutput();
-   valC = ereg->getvalC()->getOutput();
-   valB = ereg->getvalB()->getOutput();
-   srcA = ereg->getsrcA()->getOutput();
-   srcB = ereg->getsrcB()->getOutput();
+
+
+
+
    
    setMInput(mreg, stat, icode, Cnd, valE, valA, dstE, dstM);
    return false;

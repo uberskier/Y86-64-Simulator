@@ -18,18 +18,17 @@ bool MemoryStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    M * mreg = (M *) pregs[MREG];
    W * wreg = (W *) pregs[WREG];
    //dreg values
-   uint64_t dstE = RNONE, dstM = RNONE, valE = 0, Cnd = 0, valM = 0;
+   uint64_t dstE = RNONE, dstM = RNONE, valE = 0, valM = 0;
    //ereg values
-   uint64_t icode = 0, valA = 0;
+   uint64_t icode = 0;
    uint64_t stat = SAOK;
 
    stat = mreg->getstat()->getOutput();
    icode = mreg->geticode()->getOutput();
-   valA = mreg->getvalA()->getOutput();
+
    dstE = mreg->getdstE()->getOutput();
    dstM = mreg->getdstM()->getOutput();
    valE = mreg->getvalE()->getOutput();
-   Cnd = mreg->getCnd()->getOutput();
    
    setWInput(wreg, stat, icode, valE, valM, dstE, dstM);
    return false;
