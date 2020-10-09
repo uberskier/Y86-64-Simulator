@@ -18,9 +18,15 @@ bool WritebackStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 {
    W * wreg = (W *) pregs[WREG];
 
-   uint64_t icode = 0;
+   uint64_t icode = 0, stat = 0, valE = 0, valM = 0, dstE = RNONE, dstM = RNONE;
 
-   wreg->geticode()->setInput(icode);
+   icode = wreg->geticode()->getOutput();
+   stat = wreg->getstat()->getOutput();
+   valE = wreg->getvalE()->getOutput();
+   valM = wreg->getvalM()->getOutput();
+   dstE = wreg->getdstE()->getOutput();
+   dstM = wreg->getdstM()->getOutput();
+
 
    if (icode == IHALT) {
       return true;

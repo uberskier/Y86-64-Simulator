@@ -24,16 +24,16 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    uint64_t icode = 0, ifun = 0, valC = 0, valA = 0, valB = 0;
    uint64_t stat = SAOK, srcA = RNONE, srcB = RNONE;
 
-   ereg->getstat()->setInput(stat);
-   ereg->geticode()->setInput(icode);
-   ereg->getifun()->setInput(ifun);
-   ereg->getvalA()->setInput(valA);
-   ereg->getdstE()->setInput(dstE);
-   ereg->getdstM()->setInput(dstM);
-   ereg->getvalC()->setInput(valC);
-   ereg->getvalB()->setInput(valB);
-   ereg->getsrcA()->setInput(srcA);
-   ereg->getsrcB()->setInput(srcB);
+   stat = ereg->getstat()->getOutput();
+   icode = ereg->geticode()->getOutput();
+   ifun = ereg->getifun()->getOutput();
+   valA = ereg->getvalA()->getOutput();
+   dstE = ereg->getdstE()->getOutput();
+   dstM = ereg->getdstM()->getOutput();
+   valC = ereg->getvalC()->getOutput();
+   valB = ereg->getvalB()->getOutput();
+   srcA = ereg->getsrcA()->getOutput();
+   srcB = ereg->getsrcB()->getOutput();
    
    setMInput(mreg, stat, icode, Cnd, valE, valA, dstE, dstM);
    return false;
@@ -42,7 +42,6 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 void ExecuteStage::doClockHigh(PipeReg ** pregs)
 {
    M * mreg = (M *) pregs[MREG];
-   E * ereg = (E *) pregs[EREG];
 
    mreg->getstat()->normal();
    mreg->geticode()->normal();
@@ -51,16 +50,6 @@ void ExecuteStage::doClockHigh(PipeReg ** pregs)
    mreg->getvalA()->normal();
    mreg->getdstE()->normal();
    mreg->getdstM()->normal();
-   ereg->getstat()->normal();
-   ereg->geticode()->normal();
-   ereg->getifun()->normal();
-   ereg->getvalC()->normal();
-   ereg->getvalA()->normal();
-   ereg->getvalB()->normal();
-   ereg->getdstE()->normal();
-   ereg->getdstM()->normal();
-   ereg->getsrcA()->normal();
-   ereg->getsrcB()->normal();
 }
 
 void ExecuteStage::setMInput(M * mreg, uint64_t stat, uint64_t icode, 

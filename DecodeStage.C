@@ -24,13 +24,13 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    uint64_t icode = 0, ifun = 0, valC = 0, valA = 0, valB = 0;
    uint64_t dstE = RNONE,  dstM = RNONE, stat = SAOK, srcA = RNONE, srcB = RNONE;
 
-   dreg->getstat()->setInput(stat);
-   dreg->geticode()->setInput(icode);
-   dreg->getifun()->setInput(ifun);
-   dreg->getvalC()->setInput(valC);
-   dreg->getvalP()->setInput(valP);
-   dreg->getrA()->setInput(rA);
-   dreg->getrB()->setInput(rB);
+   stat = dreg->getstat()->getOutput();
+   icode = dreg->geticode()->getOutput();
+   ifun = dreg->getifun()->getOutput();
+   valC = dreg->getvalC()->getOutput();
+   valP = dreg->getvalP()->getOutput();
+   rA = dreg->getrA()->getOutput();
+   rB = dreg->getrB()->getOutput();
    
    setEInput(ereg, stat, icode, ifun, valC, valA, valB, dstE, dstM, srcA, srcB);
    return false;
@@ -38,16 +38,8 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 
 void DecodeStage::doClockHigh(PipeReg ** pregs)
 {
-   D * dreg = (D *) pregs[DREG];
    E * ereg = (E *) pregs[EREG];
 
-   dreg->getstat()->normal();
-   dreg->geticode()->normal();
-   dreg->getifun()->normal();
-   dreg->getrA()->normal();
-   dreg->getrB()->normal();
-   dreg->getvalC()->normal();
-   dreg->getvalP()->normal();
    ereg->getstat()->normal();
    ereg->geticode()->normal();
    ereg->getifun()->normal();
