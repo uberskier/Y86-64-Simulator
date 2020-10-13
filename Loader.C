@@ -167,7 +167,7 @@ uint8_t Loader::convert8(std::string line, int be, int en)
 
 bool Loader::hasErrors(std::string line) {
    if (line.substr(0,1) != " ") {
-      if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line) || hasCons(line) || hasBadAdd(line)  || hasNoCom(line) || outsideMem(line)) {
+      if(hasColon(line) || hasBar(line) || hasMultTwo(line) || hasData(line) || hasX(line) || hasZero(line) || hasNoSpace(line) || hasExtraSpace(line) || hasCons(line) || hasBadAdd(line) || outsideMem(line)) {
          return true;
       }
    }
