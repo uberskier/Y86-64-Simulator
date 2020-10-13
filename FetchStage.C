@@ -184,3 +184,11 @@ uint64_t FetchStage::PCincrement(uint64_t f_pc, bool needReg, bool needVal) {
    }
    return f_pc + 1;
 }
+
+void FetchStage::getRegIds() {
+
+}
+
+void FetchStage::buildValC() {
+   
+}
