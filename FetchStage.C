@@ -50,32 +50,6 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    icode = Tools::getBits(iCodeiFun, 4, 7);
    ifun = Tools::getBits(iCodeiFun, 0, 3);
    
-   /**
-   if(needValC(icode)){
-      if (needRegIds(icode)) {
-         uint64_t regval = mem->getByte(f_pc + 2, error);
-         valC = regval;
-         for (int x = 3; x < 8; x++) {
-            regval = mem->getByte(f_pc + x, error);
-            if (!error) {
-               valC = valC << 8;
-               valC += regval;
-            }
-         }
-      }
-      else {
-         uint64_t valDest = mem->getByte(f_pc + 1, error);
-         valC = valDest;
-         for (int x = 2; x < 8; x++) {
-            valDest = mem->getByte(f_pc + x, error);
-            if (!error) {
-               valC = valC<< 8;
-               valC += valDest;
-            }
-         }
-      }
-   }
-   */
    bool needReg = needRegIds(icode);
    bool needVal = needValC(icode);
    valP = PCincrement(f_pc, needReg, needVal);
@@ -86,9 +60,8 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
       getRegIds(f_pc, rA, rB, regs);
    }
    if (needVal) {
-      buildValC(f_pc, valC);
+      buildValC(f_pc, valC, needReg);
    }
-
    //The value passed to setInput below will need to be changed
    freg->getpredPC()->setInput(predictPC(icode, valC, valP));
    
@@ -194,16 +167,32 @@ void FetchStage::getRegIds(uint64_t f_pc, uint64_t &rA, uint64_t &rB, uint64_t r
    rB = Tools::getBits(regs, 0, 3);
 }
 
-void FetchStage::buildValC(uint64_t f_pc, uint64_t &valC) {
+// use tools buildLong with array in for loops
+void FetchStage::buildValC(uint64_t f_pc, uint64_t &valC, bool needReg) {
    Memory * memValC = Memory::getInstance();
    bool error;
-   uint64_t regval = memValC->getByte(f_pc + 2, error);
-   valC = regval;
-   for (int x = 3; x < 8; x++) {
-      regval = memValC->getByte(f_pc + x, error);
-      if (!error) {
-         valC = valC << 8;
-         valC += regval;
+   if (needReg) {
+         uint64_t regval = memValC->getByte(f_pc + 2, error);
+         valC = regval;
+         for (int x = 3; x < 8; x++) {
+            regval = memValC->getByte(f_pc + x, error);
+            if (!error) {
+               //valC = valC << 8;
+               valC += regval;
+               //printf("valC: %x\n", valC);
+            }
+         }
       }
+   else {
+         uint64_t valDest = memValC->getByte(f_pc + 1, error);
+         valC = valDest;
+         for (int x = 2; x < 8; x++) {
+            valDest = memValC->getByte(f_pc + x, error);
+            if (!error) {
+               //valC = valC<< 8;
+               valC += valDest;
+               //printf("valC: %x\n", valC);
+            }
+         }
    }
 }
