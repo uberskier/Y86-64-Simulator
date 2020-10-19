@@ -13,19 +13,29 @@
 #include "Debug.h"
 #include "Instructions.h"
 
-
+/*
+ * doClockLow:
+ * Performs the Fetch stage combinational logic that is performed when
+ * the clock edge is low.
+ *
+ * @param: pregs - array of the pipeline register sets (F, D, E, M, W instances)
+ * @param: stages - array of stages (FetchStage, DecodeStage, ExecuteStage,
+ *         MemoryStage, WritebackStage instances)
+ */
 bool WritebackStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 {
    W * wreg = (W *) pregs[WREG];
+   //commented code for unused variables
 
-   uint64_t icode = 0, stat = 0, valE = 0, valM = 0, dstE = RNONE, dstM = RNONE;
+   //, stat = 0, valE = 0, valM = 0, dstE = RNONE, dstM = RNONE;
+   uint64_t icode = 0;
 
    icode = wreg->geticode()->getOutput();
-   stat = wreg->getstat()->getOutput();
-   valE = wreg->getvalE()->getOutput();
-   valM = wreg->getvalM()->getOutput();
-   dstE = wreg->getdstE()->getOutput();
-   dstM = wreg->getdstM()->getOutput();
+   //stat = wreg->getstat()->getOutput();
+   //valE = wreg->getvalE()->getOutput();
+   //valM = wreg->getvalM()->getOutput();
+   //dstE = wreg->getdstE()->getOutput();
+   //dstM = wreg->getdstM()->getOutput();
 
 
    if (icode == IHALT) {
@@ -34,6 +44,12 @@ bool WritebackStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    return false;
 }
 
+/* doClockHigh
+ * applies the appropriate control signal to the F
+ * and D register intances
+ *
+ * @param: pregs - array of the pipeline register (F, D, E, M, W instances)
+ */
 void WritebackStage::doClockHigh(PipeReg ** pregs)
 {
    W * wreg = (W *) pregs[WREG];

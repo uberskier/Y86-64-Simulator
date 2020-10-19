@@ -14,6 +14,15 @@
 #include "Debug.h"
 #include "Instructions.h"
 
+/*
+ * doClockLow:
+ * Performs the Fetch stage combinational logic that is performed when
+ * the clock edge is low.
+ *
+ * @param: pregs - array of the pipeline register sets (F, D, E, M, W instances)
+ * @param: stages - array of stages (FetchStage, DecodeStage, ExecuteStage,
+ *         MemoryStage, WritebackStage instances)
+ */
 
 bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 {
@@ -43,6 +52,12 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    return false;
 }
 
+/* doClockHigh
+ * applies the appropriate control signal to the F
+ * and D register intances
+ *
+ * @param: pregs - array of the pipeline register (F, D, E, M, W instances)
+ */
 void DecodeStage::doClockHigh(PipeReg ** pregs)
 {
    E * ereg = (E *) pregs[EREG];
@@ -60,6 +75,22 @@ void DecodeStage::doClockHigh(PipeReg ** pregs)
 
 }
 
+/* setEInput
+ * provides the input to potentially be stored in the E register
+ * during doClockHigh
+ *
+ * @param: ereg - pointer to the E register instance
+ * @param: stat - value to be stored in the stat pipeline register within E
+ * @param: icode - value to be stored in the icode pipeline register within E
+ * @param: ifun - value to be stored in the ifun pipeline register within E
+ * @param: valC - value to be stored in the valC pipeline register within E
+ * @param: valA - value to be stored in the valA pipeline register within E
+ * @param: valB - value to be stored in the valB pipeline register within E
+ * @param: dstE - value to be stored in the dstE pipeline register within E
+ * @param: dstM - value to be stored in the dstM pipeline register within E
+ * @param: srcA - value to be stored in the srcA pipeline register within E
+ * @param: srcB - value to be stored in the srcB pipeline register within E
+*/
 void DecodeStage::setEInput(E * ereg, uint64_t stat, uint64_t icode, 
                            uint64_t ifun, uint64_t valC, uint64_t valA, uint64_t valB,
                            uint64_t dstE, uint64_t dstM, uint64_t srcA, uint64_t srcB)
@@ -76,6 +107,14 @@ void DecodeStage::setEInput(E * ereg, uint64_t stat, uint64_t icode,
    ereg->getsrcB()->setInput(srcB);
 }
 
+/* controlSrcA
+ * changes srcA according to instruction
+ * 
+ *
+ * @param: icode - instruction code
+ * @param: rA - rA register
+ * @param: srcA - pointer to srcA to change
+ */
 void DecodeStage::controlSrcA(uint64_t icode, uint64_t rA, uint64_t &srcA) {
    if (icode == IRRMOVQ || icode == IRMMOVQ || icode == IOPQ || icode == IPUSHQ) {
       srcA = rA;
@@ -88,6 +127,14 @@ void DecodeStage::controlSrcA(uint64_t icode, uint64_t rA, uint64_t &srcA) {
    }
 }
 
+/* controlSrcB
+ * changes srcB according to instruction
+ * 
+ *
+ * @param: icode - instruction code
+ * @param: rB - rB register
+ * @param: srcB - pointer to srcB to change
+ */
 void DecodeStage::controlSrcB(uint64_t icode, uint64_t rB, uint64_t &srcB) {
    if (icode == IRMMOVQ || icode == IOPQ || icode == IMRMOVQ) {
       srcB = rB;
@@ -100,6 +147,14 @@ void DecodeStage::controlSrcB(uint64_t icode, uint64_t rB, uint64_t &srcB) {
    }
 }
 
+/* controlDstE
+ * changes dstE according to instruction
+ * 
+ *
+ * @param: icode - instruction code
+ * @param: rB - rB register
+ * @param: dstE - pointer to dstE to change
+ */
 void DecodeStage::controlDstE(uint64_t icode, uint64_t rB, uint64_t &dstE) {
    if (icode == IRRMOVQ || icode == IIRMOVQ || icode == IOPQ) {
       dstE = rB;
@@ -112,6 +167,14 @@ void DecodeStage::controlDstE(uint64_t icode, uint64_t rB, uint64_t &dstE) {
    }
 }
 
+/* controlDstM
+ * changes dstM according to instruction
+ * 
+ *
+ * @param: icode - instruction code
+ * @param: rA - rA register
+ * @param: dstM - pointer to dstM to change
+ */
 void DecodeStage::controlDstM(uint64_t icode, uint64_t rA, uint64_t &dstM) {
    if (icode == IMRMOVQ || icode == IPOPQ) {
       dstM = rA;
@@ -121,10 +184,24 @@ void DecodeStage::controlDstM(uint64_t icode, uint64_t rA, uint64_t &dstM) {
    }
 }
 
+/* controlFwdA
+ * forwarding changes for valA
+ * 
+ *
+ * @param: valA - pointer to change valA
+ * @param: d_rvalA - value to changer valA
+ */
 void DecodeStage::controlFwdA(uint64_t &valA, uint64_t d_rvalA) {
    valA = d_rvalA;
 }
 
+/* controlFwdA
+ * forwarding changes for valB
+ * 
+ *
+ * @param: valB - pointer to change valB
+ * @param: d_rvalB - value to changer valB
+ */
 void DecodeStage::controlFwdB(uint64_t &valB, uint64_t d_rvalB) {
    valB = d_rvalB;
 }

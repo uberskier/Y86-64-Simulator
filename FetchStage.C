@@ -118,6 +118,15 @@ void FetchStage::setDInput(D * dreg, uint64_t stat, uint64_t icode,
    dreg->getvalP()->setInput(valP);
 }
 
+/*
+ * selectPC:
+ * Performs the logic for selecting the program counter
+ * 
+ *
+ * @param: F * freg - Fetch register
+ * @param: M * mreg - Memory register
+ * @param: W * wreg - Writeback register
+ */
 uint64_t FetchStage::selectPC(F * freg, M * mreg, W * wreg) {
    uint64_t m_icode = mreg->geticode()->getOutput(), w_icode = wreg->geticode()->getOutput(), m_Cnd = mreg->getCnd()->getOutput(),
                       m_valA = mreg->getvalA()->getOutput(), w_valM = wreg->getvalM()->getOutput();
@@ -132,7 +141,16 @@ uint64_t FetchStage::selectPC(F * freg, M * mreg, W * wreg) {
    return freg->getpredPC()->getOutput();
    
 }
- 
+
+/*
+ * predictPC:
+ * Predicts the PC for next instruction
+ * 
+ *
+ * @param: f_icode - icode of instruction
+ * @param: f_valC - valC could be location
+ * @param: f_valP - valP could be location/
+ */
 uint64_t FetchStage::predictPC(uint64_t f_icode, uint64_t f_valC, uint64_t f_valP) {
    if (f_icode == IJXX || f_icode == ICALL) {
       return f_valC;
@@ -140,16 +158,37 @@ uint64_t FetchStage::predictPC(uint64_t f_icode, uint64_t f_valC, uint64_t f_val
    return f_valP;
 }
 
-
+/*
+ * needRegIds:
+ * Determines if instruction needs Register IDs
+ * 
+ *
+ * @param: icode - icode of instruction
+ */
 bool FetchStage::needRegIds(uint64_t icode){
    return (icode == IRRMOVQ || icode == IOPQ || icode == IPUSHQ || icode == IPOPQ || icode == IIRMOVQ || icode == IRMMOVQ || icode == IMRMOVQ);
 }
 
-
+/*
+ * needValC:
+ * Determines if instruction needs a ValC 
+ * 
+ *
+ * @param: icode - icode of instruction
+ */
 bool FetchStage::needValC(uint64_t icode){
    return (icode == IIRMOVQ || icode == IRMMOVQ || icode == IMRMOVQ || icode == IJXX || icode == ICALL);
 }
 
+/*
+ * PCincrement:
+ * Increments the PC based on instruction
+ * 
+ *
+ * @param: f_pc - current program counter
+ * @param: needReg - boolean if instruction needs Register Ids
+ * @param: needVal - boolean if instruction needs ValC
+ */
 uint64_t FetchStage::PCincrement(uint64_t f_pc, bool needReg, bool needVal) {
    if (needReg) {
       if (needVal) {
@@ -162,12 +201,31 @@ uint64_t FetchStage::PCincrement(uint64_t f_pc, bool needReg, bool needVal) {
    return f_pc + 1;
 }
 
+/*
+ * getRegIds:
+ * Grabs register Ids from memory
+ * 
+ *
+ * @param: f_pc - current program counter
+ * @param: rA - pointer by reference to rA
+ * @param: rB - pointer by reference to rB
+ * @param: regs - uint of byte where registers are stored
+ */
 void FetchStage::getRegIds(uint64_t f_pc, uint64_t &rA, uint64_t &rB, uint64_t regs) {
    rA = Tools::getBits(regs, 4, 7);
    rB = Tools::getBits(regs, 0, 3);
 }
 
 // use tools buildLong with array in for loops
+/*
+ * buildValC:
+ * builds then number for valc
+ * 
+ *
+ * @param: f_pc - current program counter
+ * @param: valC - pointer by reference to valC
+ * @param: needReg - boolean if instruction needs reg ids
+ */
 void FetchStage::buildValC(uint64_t f_pc, uint64_t &valC, bool needReg) {
    Memory * memValC = Memory::getInstance();
    bool error;
