@@ -344,17 +344,11 @@ uint8_t Tools::sign(uint64_t source)
  */
 bool Tools::addOverflow(uint64_t op1, uint64_t op2)
 {
-   //printf("op1:Ox%" PRIx64 "\n", op1);
-   //printf("op2:Ox%" PRIx64 "\n", op2);
-   uint64_t sum = op1 + op2;
-   uint64_t op1Sign = op1 >> 63;
-   //printf("op1Sign:Ox%" PRIx64 "\n", op1Sign);
-   uint64_t op2Sign = op2 >> 63;
-   //printf("op2Sign:Ox%" PRIx64 "\n", op2Sign);
-   uint64_t sumSign = sum >> 63;
-   //printf("sumSign:Ox%" PRIx64 "\n", sumSign);
-   //printf("--------------------------------\n");
-   return (op1Sign != op2Sign)|((op1Sign != sumSign)&(op2Sign != sumSign));
+   uint8_t o1 = sign(op1);
+   uint8_t o2 = sign(op2);
+   int64_t op11 = op1;
+   int64_t op22 = op2;
+   return ((o1 != o2) || (o1 == o2 && ((((op11 + op22) >= 0) && o1 == 1) || (((op11 + op22) < 0) && o1 == 0))));
 }
 
 /**
@@ -383,11 +377,10 @@ bool Tools::addOverflow(uint64_t op1, uint64_t op2)
 bool Tools::subOverflow(uint64_t op1, uint64_t op2)
 {
    //Note: the result computed is op2 - op1 (not op1 - op2)
-   uint64_t sub = op2 - op1;
-   uint64_t op2Sign = op2 >> 63;
-   uint64_t op1Sign = op1 >> 63;
-   uint64_t subSign = sub >> 63;
-
-   return !(op1Sign == op2Sign)|(op1Sign == subSign);
+   uint8_t o1 = sign(op1);
+   uint8_t o2 = sign(op2);
+   int64_t op11 = op1;
+   int64_t op22 = op2;
+   return ((o1 != o2 && ((((op22 - op11) >= 0) && o1 == 0) || ((((op22 - op11) < 0)) && o1 == 1)))); 
 }
 

@@ -1,9 +1,9 @@
 make clean
-make[1]: Entering directory `/u/css/nobleza/3481/lab9/cs3481-yess-matney-noble'
+make[1]: Entering directory `/u/css/matneybw/3481/Lab9/cs3481-yess-matney-noble'
 rm yess.o Memory.o Tools.o RegisterFile.o ConditionCodes.o Loader.o D.o DecodeStage.o E.o ExecuteStage.o F.o FetchStage.o M.o MemoryStage.o PipeReg.o PipeRegField.o Simulate.o W.o WritebackStage.o yess
-make[1]: Leaving directory `/u/css/nobleza/3481/lab9/cs3481-yess-matney-noble'
+make[1]: Leaving directory `/u/css/matneybw/3481/Lab9/cs3481-yess-matney-noble'
 make yess
-make[1]: Entering directory `/u/css/nobleza/3481/lab9/cs3481-yess-matney-noble'
+make[1]: Entering directory `/u/css/matneybw/3481/Lab9/cs3481-yess-matney-noble'
 g++ -g -c -Wall -std=c++11 -O0 yess.C -o yess.o
 g++ -g -c -Wall -std=c++11 -O0 Memory.C -o Memory.o
 g++ -g -c -Wall -std=c++11 -O0 Tools.C -o Tools.o
@@ -24,7 +24,7 @@ g++ -g -c -Wall -std=c++11 -O0 Simulate.C -o Simulate.o
 g++ -g -c -Wall -std=c++11 -O0 W.C -o W.o
 g++ -g -c -Wall -std=c++11 -O0 WritebackStage.C -o WritebackStage.o
 g++   yess.o Memory.o Tools.o RegisterFile.o ConditionCodes.o Loader.o D.o DecodeStage.o E.o ExecuteStage.o F.o FetchStage.o M.o MemoryStage.o PipeReg.o PipeRegField.o Simulate.o W.o WritebackStage.o   -o yess
-make[1]: Leaving directory `/u/css/nobleza/3481/lab9/cs3481-yess-matney-noble'
+make[1]: Leaving directory `/u/css/matneybw/3481/Lab9/cs3481-yess-matney-noble'
 ./run.sh
 Testing /u/css/classes/3481/204/lab9/Tests/error1.yo ... passed
 Testing /u/css/classes/3481/204/lab9/Tests/error2.yo ... passed
@@ -44,107 +44,79 @@ Testing /u/css/classes/3481/204/lab9/Tests/error15.yo ... passed
 Testing /u/css/classes/3481/204/lab9/Tests/nop.yo ... passed
 Testing /u/css/classes/3481/204/lab9/Tests/irmovq.yo ... passed
 Testing /u/css/classes/3481/204/lab9/Tests/addq.yo ... failed
-304c304
-< ZF: 0 SF: 1 OF: 0
+301c301
+< M: stat: 1 icode: 6 Cnd: 0 valE: ffffffffffffffff valA: 0000000000000003 dstE: 3 dstM: f
 ---
-> ZF: 0 SF: 0 OF: 1
-325c325
-< ZF: 0 SF: 1 OF: 0
+> M: stat: 1 icode: 6 Cnd: 1 valE: ffffffffffffffff valA: 0000000000000003 dstE: 3 dstM: f
+427c427
+< M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000005 dstE: 5 dstM: f
 ---
-> ZF: 0 SF: 0 OF: 1
-346c346
-< ZF: 0 SF: 1 OF: 0
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000005 dstE: 5 dstM: f
+553c553
+< M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 8000000000000000 dstE: 7 dstM: f
 ---
-> ZF: 0 SF: 0 OF: 1
-367c367
-< ZF: 0 SF: 1 OF: 0
----
-> ZF: 0 SF: 0 OF: 1
-388c388
-< ZF: 0 SF: 1 OF: 0
----
-> ZF: 0 SF: 0 OF: 1
-409c409
-< ZF: 0 SF: 1 OF: 0
----
-> ZF: 0 SF: 0 OF: 1
-430c430
-< ZF: 1 SF: 0 OF: 0
----
-> ZF: 0 SF: 0 OF: 1
-451c451
-< ZF: 1 SF: 0 OF: 0
----
-> ZF: 0 SF: 0 OF: 1
-472c472
-< ZF: 1 SF: 0 OF: 0
----
-> ZF: 0 SF: 0 OF: 1
-493c493
-< ZF: 1 SF: 0 OF: 0
----
-> ZF: 0 SF: 0 OF: 1
-514c514
-< ZF: 1 SF: 0 OF: 0
----
-> ZF: 0 SF: 0 OF: 1
-535c535
-< ZF: 1 SF: 0 OF: 0
----
-> ZF: 0 SF: 0 OF: 1
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 8000000000000000 dstE: 7 dstM: f
 556c556
 < ZF: 1 SF: 0 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 1 SF: 0 OF: 0
 577c577
 < ZF: 1 SF: 0 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 1 SF: 0 OF: 0
 598c598
 < ZF: 1 SF: 0 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 1 SF: 0 OF: 0
 619c619
 < ZF: 1 SF: 0 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 1 SF: 0 OF: 0
 640c640
 < ZF: 1 SF: 0 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 1 SF: 0 OF: 0
 661c661
 < ZF: 1 SF: 0 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 1 SF: 0 OF: 0
+679c679
+< M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffe valA: 7fffffffffffffff dstE: 9 dstM: f
+---
+> M: stat: 1 icode: 6 Cnd: 1 valE: fffffffffffffffe valA: 7fffffffffffffff dstE: 9 dstM: f
 682c682
 < ZF: 0 SF: 1 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 703c703
 < ZF: 0 SF: 1 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 724c724
 < ZF: 0 SF: 1 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 745c745
 < ZF: 0 SF: 1 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 766c766
 < ZF: 0 SF: 1 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 787c787
 < ZF: 0 SF: 1 OF: 1
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
+805c805
+< M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: 8000000000000000 dstE: b dstM: f
+---
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000001 valA: 8000000000000000 dstE: b dstM: f
 Testing /u/css/classes/3481/204/lab9/Tests/andq.yo ... failed
 167c167
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: 0000000000000001 dstE: 1 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000001 dstE: 1 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000001 dstE: 1 dstM: f
 170c170
 < ZF: 0 SF: 0 OF: 0
 ---
@@ -181,6 +153,10 @@ Testing /u/css/classes/3481/204/lab9/Tests/andq.yo ... failed
 ---
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000000 %rdx: 0000000000000001 %rbx: 8000000000000000
+287c287
+< M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000001 dstE: 3 dstM: f
+---
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000001 dstE: 3 dstM: f
 291c291
 < %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000001 %rbx: 8000000000000000
 ---
@@ -208,7 +184,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/andq.yo ... failed
 407c407
 < M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffe valA: ffffffffffffffff dstE: 5 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: ffffffffffffffff dstE: 5 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: ffffffffffffffff dstE: 5 dstM: f
 410,411c410,411
 < ZF: 0 SF: 1 OF: 0
 < %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000001 %rbx: 0000000000000000
@@ -260,7 +236,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/andq.yo ... failed
 527c527
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: ffffffffffffffff dstE: 7 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: ffffffffffffffff dstE: 7 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: ffffffffffffffff dstE: 7 dstM: f
 530,532c530,532
 < ZF: 0 SF: 0 OF: 0
 < %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000001 %rbx: 0000000000000000
@@ -313,6 +289,10 @@ Testing /u/css/classes/3481/204/lab9/Tests/andq.yo ... failed
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000000 %rdx: 0000000000000001 %rbx: 0000000000000000
 > %rsp: ffffffffffffffff %rbp: 0000000000000000 %rsi: ffffffffffffffff %rdi: 0000000000000000
+647c647
+< M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: f00000000000000f dstE: 9 dstM: f
+---
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: f00000000000000f dstE: 9 dstM: f
 651,652c651,652
 < %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000001 %rbx: 0000000000000000
 < %rsp: ffffffffffffffff %rbp: fffffffffffffffe %rsi: ffffffffffffffff %rdi: 0000000000000001
@@ -341,11 +321,11 @@ Testing /u/css/classes/3481/204/lab9/Tests/subq.yo ... failed
 167c167
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000002 valA: 0000000000000001 dstE: 1 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffe valA: 0000000000000001 dstE: 1 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: fffffffffffffffe valA: 0000000000000001 dstE: 1 dstM: f
 170c170
 < ZF: 0 SF: 0 OF: 0
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 188c188
 < W: stat: 1 icode: 6 valE: 0000000000000002 valM: 0000000000000000 dstE: 1 dstM: f
 ---
@@ -353,62 +333,74 @@ Testing /u/css/classes/3481/204/lab9/Tests/subq.yo ... failed
 190c190
 < ZF: 0 SF: 0 OF: 0
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 210,211c210,211
 < ZF: 0 SF: 0 OF: 0
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000000 %rbx: 0000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000000 %rbx: 0000000000000000
 230,231c230,231
 < ZF: 0 SF: 0 OF: 0
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 0000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 0000000000000000
 250,251c250,251
 < ZF: 0 SF: 0 OF: 0
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 8000000000000000
 270,271c270,271
 < ZF: 0 SF: 0 OF: 0
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 8000000000000000
 287c287
 < M: stat: 1 icode: 6 Cnd: 0 valE: 7fffffffffffffff valA: 0000000000000001 dstE: 3 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 8000000000000001 valA: 0000000000000001 dstE: 3 dstM: f
-291c291
+> M: stat: 1 icode: 6 Cnd: 1 valE: 8000000000000001 valA: 0000000000000001 dstE: 3 dstM: f
+290,291c290,291
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 8000000000000000
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 8000000000000000
 308c308
 < W: stat: 1 icode: 6 valE: 7fffffffffffffff valM: 0000000000000000 dstE: 3 dstM: f
 ---
 > W: stat: 1 icode: 6 valE: 8000000000000001 valM: 0000000000000000 dstE: 3 dstM: f
-311c311
+310,311c310,311
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 8000000000000000
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 8000000000000000
-331c331
+330,331c330,331
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 7fffffffffffffff
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 8000000000000001
-351c351
+350,351c350,351
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 7fffffffffffffff
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 8000000000000001
-371c371
+370,371c370,371
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 7fffffffffffffff
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 8000000000000001
-391c391
+390,391c390,391
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 7fffffffffffffff
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 8000000000000001
 407c407
 < M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffe valA: 0000000000000005 dstE: 5 dstM: f
@@ -465,7 +457,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/subq.yo ... failed
 527c527
 < M: stat: 1 icode: 6 Cnd: 0 valE: ffffffffffffffff valA: 8000000000000000 dstE: 7 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: 8000000000000000 dstE: 7 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000001 valA: 8000000000000000 dstE: 7 dstM: f
 530,532c530,532
 < ZF: 0 SF: 1 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 7fffffffffffffff
@@ -518,6 +510,10 @@ Testing /u/css/classes/3481/204/lab9/Tests/subq.yo ... failed
 > ZF: 0 SF: 0 OF: 1
 > %rax: 0000000000000001 %rcx: fffffffffffffffe %rdx: 0000000000000001 %rbx: 8000000000000001
 > %rsp: 0000000000000005 %rbp: 0000000000000002 %rsi: 8000000000000000 %rdi: 0000000000000001
+647c647
+< M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: ffffffffffffffff dstE: 9 dstM: f
+---
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: ffffffffffffffff dstE: 9 dstM: f
 651,652c651,652
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 7fffffffffffffff
 < %rsp: 0000000000000005 %rbp: fffffffffffffffe %rsi: 8000000000000000 %rdi: ffffffffffffffff
@@ -687,6 +683,10 @@ Testing /u/css/classes/3481/204/lab9/Tests/xorq.yo ... failed
 > ZF: 0 SF: 0 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000001 %rbx: 0000000000000001
 > %rsp: ffffffffffffffff %rbp: 0000000000000001 %rsi: ffffffffffffffff %rdi: 0000000000000001
+647c647
+< M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: fffffffffffffffe dstE: 9 dstM: f
+---
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: fffffffffffffffe dstE: 9 dstM: f
 651,652c651,652
 < %rax: 0000000000000001 %rcx: 0000000000000002 %rdx: 0000000000000001 %rbx: 8000000000000001
 < %rsp: ffffffffffffffff %rbp: 0000000000000001 %rsi: ffffffffffffffff %rdi: fffffffffffffffe
@@ -833,13 +833,13 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor1.yo ... failed
 469c469
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 8000000000000000 dstE: 7 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 8000000000000000 valA: 8000000000000000 dstE: 7 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 8000000000000000 valA: 8000000000000000 dstE: 7 dstM: f
 472,474c472,474
 < ZF: 1 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 < %rsp: 0000000000000005 %rbp: 0000000000000000 %rsi: 8000000000000000 %rdi: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000003 %rbx: 0000000000000003
 > %rsp: 0000000000000005 %rbp: 0000000000000005 %rsi: 8000000000000000 %rdi: 8000000000000000
 491c491
@@ -851,7 +851,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor1.yo ... failed
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 < %rsp: 0000000000000005 %rbp: 0000000000000000 %rsi: 8000000000000000 %rdi: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000003 %rbx: 0000000000000003
 > %rsp: 0000000000000005 %rbp: 0000000000000005 %rsi: 8000000000000000 %rdi: 8000000000000000
 514,516c514,516
@@ -859,7 +859,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor1.yo ... failed
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 < %rsp: 0000000000000005 %rbp: 0000000000000000 %rsi: 8000000000000000 %rdi: 0000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000003 %rbx: 0000000000000003
 > %rsp: 0000000000000005 %rbp: 0000000000000005 %rsi: 8000000000000000 %rdi: 8000000000000000
 535,537c535,537
@@ -867,7 +867,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor1.yo ... failed
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 < %rsp: 0000000000000005 %rbp: 0000000000000000 %rsi: 8000000000000000 %rdi: 0000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000003 %rbx: 0000000000000003
 > %rsp: 0000000000000005 %rbp: 0000000000000005 %rsi: 8000000000000000 %rdi: 8000000000000000
 552c552
@@ -879,7 +879,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor1.yo ... failed
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 < %rsp: 0000000000000005 %rbp: 0000000000000000 %rsi: 8000000000000000 %rdi: 0000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000003 %rbx: 0000000000000003
 > %rsp: 0000000000000005 %rbp: 0000000000000005 %rsi: 8000000000000000 %rdi: 8000000000000000
 574c574
@@ -943,12 +943,14 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor1.yo ... failed
 679c679
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: 8000000000000000 dstE: b dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 8000000000000000 valA: 8000000000000000 dstE: b dstM: f
-683,685c683,685
+> M: stat: 1 icode: 6 Cnd: 1 valE: 8000000000000000 valA: 8000000000000000 dstE: b dstM: f
+682,685c682,685
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 < %rsp: 0000000000000005 %rbp: 0000000000000000 %rsi: 8000000000000000 %rdi: 0000000000000000
 < % r8: 7fffffffffffffff % r9: fffffffffffffffe %r10: 8000000000000000 %r11: 8000000000000001
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000003 %rbx: 0000000000000003
 > %rsp: 0000000000000005 %rbp: 0000000000000005 %rsi: 8000000000000000 %rdi: 8000000000000000
 > % r8: 7fffffffffffffff % r9: 7fffffffffffffff %r10: 8000000000000000 %r11: 8000000000000001
@@ -956,27 +958,33 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor1.yo ... failed
 < W: stat: 1 icode: 6 valE: 0000000000000001 valM: 0000000000000000 dstE: b dstM: f
 ---
 > W: stat: 1 icode: 6 valE: 8000000000000000 valM: 0000000000000000 dstE: b dstM: f
-704,706c704,706
+703,706c703,706
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 < %rsp: 0000000000000005 %rbp: 0000000000000000 %rsi: 8000000000000000 %rdi: 0000000000000000
 < % r8: 7fffffffffffffff % r9: fffffffffffffffe %r10: 8000000000000000 %r11: 8000000000000001
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000003 %rbx: 0000000000000003
 > %rsp: 0000000000000005 %rbp: 0000000000000005 %rsi: 8000000000000000 %rdi: 8000000000000000
 > % r8: 7fffffffffffffff % r9: 7fffffffffffffff %r10: 8000000000000000 %r11: 8000000000000001
-725,727c725,727
+724,727c724,727
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 < %rsp: 0000000000000005 %rbp: 0000000000000000 %rsi: 8000000000000000 %rdi: 0000000000000000
 < % r8: 7fffffffffffffff % r9: fffffffffffffffe %r10: 8000000000000000 %r11: 0000000000000001
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000003 %rbx: 0000000000000003
 > %rsp: 0000000000000005 %rbp: 0000000000000005 %rsi: 8000000000000000 %rdi: 8000000000000000
 > % r8: 7fffffffffffffff % r9: 7fffffffffffffff %r10: 8000000000000000 %r11: 8000000000000000
-746,748c746,748
+745,748c745,748
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 < %rsp: 0000000000000005 %rbp: 0000000000000000 %rsi: 8000000000000000 %rdi: 0000000000000000
 < % r8: 7fffffffffffffff % r9: fffffffffffffffe %r10: 8000000000000000 %r11: 0000000000000001
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000001 %rcx: 0000000000000001 %rdx: 0000000000000003 %rbx: 0000000000000003
 > %rsp: 0000000000000005 %rbp: 0000000000000005 %rsi: 8000000000000000 %rdi: 8000000000000000
 > % r8: 7fffffffffffffff % r9: 7fffffffffffffff %r10: 8000000000000000 %r11: 8000000000000000
@@ -990,7 +998,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor2.yo ... failed
 133c133
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000003 valA: 0000000000000001 dstE: 1 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 1 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 1 dstM: f
 136c136
 < ZF: 0 SF: 0 OF: 0
 ---
@@ -1024,7 +1032,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor2.yo ... failed
 217c217
 < M: stat: 1 icode: 6 Cnd: 0 valE: ffffffffffffffff valA: 0000000000000003 dstE: 3 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 3 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 3 dstM: f
 220,221c220,221
 < ZF: 0 SF: 1 OF: 0
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: fffffffffffffffc
@@ -1062,7 +1070,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor2.yo ... failed
 301c301
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000005 dstE: 5 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 5 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 5 dstM: f
 305c305
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 ---
@@ -1088,7 +1096,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor2.yo ... failed
 385c385
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 8000000000000000 dstE: 7 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 7 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 7 dstM: f
 388,389c388,389
 < ZF: 1 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
@@ -1122,7 +1130,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor2.yo ... failed
 469c469
 < M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffe valA: 7fffffffffffffff dstE: 9 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 9 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 9 dstM: f
 472,473c472,473
 < ZF: 0 SF: 1 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
@@ -1168,7 +1176,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor2.yo ... failed
 553c553
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: 8000000000000000 dstE: b dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: b dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: b dstM: f
 556,557c556,557
 < ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
@@ -1223,7 +1231,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor3.yo ... failed
 112c112
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000003 valA: 0000000000000001 dstE: 1 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 1 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 1 dstM: f
 115c115
 < ZF: 0 SF: 0 OF: 0
 ---
@@ -1251,7 +1259,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor3.yo ... failed
 175c175
 < M: stat: 1 icode: 6 Cnd: 0 valE: ffffffffffffffff valA: 0000000000000003 dstE: 3 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 3 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 3 dstM: f
 178,179c178,179
 < ZF: 0 SF: 1 OF: 0
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: 0000000000000000
@@ -1283,7 +1291,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor3.yo ... failed
 238c238
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000005 dstE: 5 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 5 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 5 dstM: f
 242c242
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
 ---
@@ -1305,7 +1313,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor3.yo ... failed
 301c301
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 8000000000000000 dstE: 7 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 7 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 7 dstM: f
 304,305c304,305
 < ZF: 1 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
@@ -1333,7 +1341,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor3.yo ... failed
 364c364
 < M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffe valA: 7fffffffffffffff dstE: 9 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 9 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 9 dstM: f
 367,368c367,368
 < ZF: 0 SF: 1 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
@@ -1369,7 +1377,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor3.yo ... failed
 427c427
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: 8000000000000000 dstE: b dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: b dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: b dstM: f
 430,431c430,431
 < ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000001 %rcx: 0000000000000003 %rdx: 0000000000000003 %rbx: ffffffffffffffff
@@ -1446,54 +1454,44 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 259c259
 < M: stat: 1 icode: 6 Cnd: 0 valE: ffffffffffffffff valA: fffffffffffffffc dstE: 2 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffc valA: fffffffffffffffc dstE: 2 dstM: f
-262,263c262,263
-< ZF: 0 SF: 1 OF: 0
+> M: stat: 1 icode: 6 Cnd: 1 valE: fffffffffffffffc valA: fffffffffffffffc dstE: 2 dstM: f
+263c263
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: 0000000000000003 %rbx: fffffffffffffffc
 ---
-> ZF: 0 SF: 0 OF: 1
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: 0000000000000003 %rbx: fffffffffffffffc
 281c281
 < W: stat: 1 icode: 6 valE: ffffffffffffffff valM: 0000000000000000 dstE: 2 dstM: f
 ---
 > W: stat: 1 icode: 6 valE: fffffffffffffffc valM: 0000000000000000 dstE: 2 dstM: f
-283,284c283,284
-< ZF: 0 SF: 1 OF: 0
+284c284
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: 0000000000000003 %rbx: fffffffffffffffc
 ---
-> ZF: 0 SF: 0 OF: 1
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: 0000000000000003 %rbx: fffffffffffffffc
-304,305c304,305
-< ZF: 0 SF: 1 OF: 0
+305c305
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 ---
-> ZF: 0 SF: 0 OF: 1
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
-325,326c325,326
-< ZF: 0 SF: 1 OF: 0
+326c326
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 ---
-> ZF: 0 SF: 0 OF: 1
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 342c342
 < E: valB: 0000000000000005 dstE: 4 dstM: f srcA: 5 srcB: 4
 ---
 > E: valB: 0000000000000000 dstE: 4 dstM: f srcA: 5 srcB: 4
-346,347c346,347
-< ZF: 0 SF: 1 OF: 0
+347c347
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 ---
-> ZF: 0 SF: 0 OF: 1
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 364c364
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: fffffffffffffffb dstE: 4 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffb valA: fffffffffffffffb dstE: 4 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: fffffffffffffffb valA: fffffffffffffffb dstE: 4 dstM: f
 367,368c367,368
 < ZF: 1 SF: 0 OF: 0
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 386c386
 < W: stat: 1 icode: 6 valE: 0000000000000000 valM: 0000000000000000 dstE: 4 dstM: f
@@ -1503,14 +1501,14 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 < ZF: 1 SF: 0 OF: 0
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 409,411c409,411
 < ZF: 1 SF: 0 OF: 0
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 0000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 0000000000000000
 430,432c430,432
@@ -1518,7 +1516,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 8000000000000000
 447c447
@@ -1530,19 +1528,19 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 469c469
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 8000000000000000 dstE: 6 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 8000000000000000 valA: 8000000000000000 dstE: 6 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 8000000000000000 valA: 8000000000000000 dstE: 6 dstM: f
 472,474c472,474
 < ZF: 1 SF: 0 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 491c491
@@ -1554,7 +1552,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 514,516c514,516
@@ -1562,7 +1560,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 535,537c535,537
@@ -1570,7 +1568,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 552c552
@@ -1582,7 +1580,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 8000000000000000
 ---
-> ZF: 0 SF: 0 OF: 1
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 574c574
@@ -1646,12 +1644,14 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 679c679
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: 8000000000000001 dstE: a dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 8000000000000001 valA: 8000000000000001 dstE: a dstM: f
-683,685c683,685
+> M: stat: 1 icode: 6 Cnd: 1 valE: 8000000000000001 valA: 8000000000000001 dstE: a dstM: f
+682,685c682,685
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 8000000000000000
 < % r8: fffffffffffffffe % r9: 7fffffffffffffff %r10: 8000000000000000 %r11: 8000000000000001
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 > % r8: 7fffffffffffffff % r9: 7fffffffffffffff %r10: 8000000000000000 %r11: 8000000000000001
@@ -1659,27 +1659,33 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor4.yo ... failed
 < W: stat: 1 icode: 6 valE: 0000000000000001 valM: 0000000000000000 dstE: a dstM: f
 ---
 > W: stat: 1 icode: 6 valE: 8000000000000001 valM: 0000000000000000 dstE: a dstM: f
-704,706c704,706
+703,706c703,706
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 8000000000000000
 < % r8: fffffffffffffffe % r9: 7fffffffffffffff %r10: 8000000000000000 %r11: 8000000000000001
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 > % r8: 7fffffffffffffff % r9: 7fffffffffffffff %r10: 8000000000000000 %r11: 8000000000000001
-725,727c725,727
+724,727c724,727
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 8000000000000000
 < % r8: fffffffffffffffe % r9: 7fffffffffffffff %r10: 0000000000000001 %r11: 8000000000000001
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 > % r8: 7fffffffffffffff % r9: 7fffffffffffffff %r10: 8000000000000001 %r11: 8000000000000001
-746,748c746,748
+745,748c745,748
+< ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 < %rsp: 0000000000000000 %rbp: fffffffffffffffb %rsi: 0000000000000000 %rdi: 8000000000000000
 < % r8: fffffffffffffffe % r9: 7fffffffffffffff %r10: 0000000000000001 %r11: 8000000000000001
 ---
+> ZF: 0 SF: 1 OF: 0
 > %rax: 0000000000000002 %rcx: 0000000000000002 %rdx: fffffffffffffffc %rbx: fffffffffffffffc
 > %rsp: fffffffffffffffb %rbp: fffffffffffffffb %rsi: 8000000000000000 %rdi: 8000000000000000
 > % r8: 7fffffffffffffff % r9: 7fffffffffffffff %r10: 8000000000000001 %r11: 8000000000000001
@@ -1693,7 +1699,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor5.yo ... failed
 133c133
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000003 valA: 0000000000000002 dstE: 0 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 0 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 0 dstM: f
 136c136
 < ZF: 0 SF: 0 OF: 0
 ---
@@ -1727,7 +1733,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor5.yo ... failed
 217c217
 < M: stat: 1 icode: 6 Cnd: 0 valE: ffffffffffffffff valA: fffffffffffffffc dstE: 2 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 2 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 2 dstM: f
 220,221c220,221
 < ZF: 0 SF: 1 OF: 0
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: 0000000000000003 %rbx: fffffffffffffffc
@@ -1765,7 +1771,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor5.yo ... failed
 301c301
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: fffffffffffffffb dstE: 4 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 4 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 4 dstM: f
 305c305
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 ---
@@ -1791,7 +1797,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor5.yo ... failed
 385c385
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 8000000000000000 dstE: 6 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 6 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 6 dstM: f
 388,389c388,389
 < ZF: 1 SF: 0 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
@@ -1825,7 +1831,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor5.yo ... failed
 469c469
 < M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffe valA: 7fffffffffffffff dstE: 8 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 8 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 8 dstM: f
 472,473c472,473
 < ZF: 0 SF: 1 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
@@ -1871,7 +1877,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor5.yo ... failed
 553c553
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: 8000000000000001 dstE: a dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: a dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: a dstM: f
 556,557c556,557
 < ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
@@ -1926,7 +1932,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor6.yo ... failed
 112c112
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000003 valA: 0000000000000002 dstE: 0 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 0 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 0 dstM: f
 115c115
 < ZF: 0 SF: 0 OF: 0
 ---
@@ -1954,7 +1960,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor6.yo ... failed
 175c175
 < M: stat: 1 icode: 6 Cnd: 0 valE: ffffffffffffffff valA: fffffffffffffffc dstE: 2 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 2 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 2 dstM: f
 178,179c178,179
 < ZF: 0 SF: 1 OF: 0
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: 0000000000000000 %rbx: fffffffffffffffc
@@ -1986,7 +1992,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor6.yo ... failed
 238c238
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: fffffffffffffffb dstE: 4 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 4 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 4 dstM: f
 242c242
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
 ---
@@ -2008,7 +2014,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor6.yo ... failed
 301c301
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 8000000000000000 dstE: 6 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 6 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 6 dstM: f
 304,305c304,305
 < ZF: 1 SF: 0 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
@@ -2036,7 +2042,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor6.yo ... failed
 364c364
 < M: stat: 1 icode: 6 Cnd: 0 valE: fffffffffffffffe valA: 7fffffffffffffff dstE: 8 dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: 8 dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: 8 dstM: f
 367,368c367,368
 < ZF: 0 SF: 1 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
@@ -2072,7 +2078,7 @@ Testing /u/css/classes/3481/204/lab9/Tests/addqfor6.yo ... failed
 427c427
 < M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000001 valA: 8000000000000001 dstE: a dstM: f
 ---
-> M: stat: 1 icode: 6 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: a dstM: f
+> M: stat: 1 icode: 6 Cnd: 1 valE: 0000000000000000 valA: 0000000000000000 dstE: a dstM: f
 430,431c430,431
 < ZF: 0 SF: 0 OF: 1
 < %rax: 0000000000000003 %rcx: 0000000000000002 %rdx: ffffffffffffffff %rbx: fffffffffffffffc
