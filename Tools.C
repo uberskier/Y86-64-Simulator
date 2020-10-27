@@ -344,16 +344,16 @@ uint8_t Tools::sign(uint64_t source)
  */
 bool Tools::addOverflow(uint64_t op1, uint64_t op2)
 {
-   printf("op1:Ox%" PRIx64 "\n", op1);
-   printf("op2:Ox%" PRIx64 "\n", op2);
+   //printf("op1:Ox%" PRIx64 "\n", op1);
+   //printf("op2:Ox%" PRIx64 "\n", op2);
    uint64_t sum = op1 + op2;
    uint64_t op1Sign = op1 >> 63;
-   printf("op1Sign:Ox%" PRIx64 "\n", op1Sign);
+   //printf("op1Sign:Ox%" PRIx64 "\n", op1Sign);
    uint64_t op2Sign = op2 >> 63;
-   printf("op2Sign:Ox%" PRIx64 "\n", op2Sign);
+   //printf("op2Sign:Ox%" PRIx64 "\n", op2Sign);
    uint64_t sumSign = sum >> 63;
-   printf("sumSign:Ox%" PRIx64 "\n", sumSign);
-   printf("--------------------------------\n");
+   //printf("sumSign:Ox%" PRIx64 "\n", sumSign);
+   //printf("--------------------------------\n");
    return (op1Sign != op2Sign)|((op1Sign != sumSign)&(op2Sign != sumSign));
 }
 

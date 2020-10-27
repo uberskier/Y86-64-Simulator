@@ -14,6 +14,7 @@
 #include "Debug.h"
 #include "Instructions.h"
 #include "ConditionCodes.h"
+#include "Tools.h"
 
 /*
  * doClockLow:
@@ -53,7 +54,7 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    valE = ALUComp(alufun, aluA, aluB);
 
    if (set_cc(icode)) {
-      Cnd = CCComp(valE);
+      Cnd = CCComp(valE, aluA, aluB, alufun);
    }
 
    
@@ -127,13 +128,37 @@ uint64_t ExecuteStage::ALUComp(uint64_t alufun, uint64_t aluA, uint64_t aluB) {
       }
       return 1;
    }
+   return 0;
 }
 
-uint64_t ExecuteStage::CCComp(uint64_t valE) {
+uint64_t ExecuteStage::CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint64_t alufun) {
     ConditionCodes * cndCodes = ConditionCodes::getInstance();
     bool error;
-    cndCodes->setConditionCode(true, valE, error);
-    return cndCodes->getConditionCode(valE, error);
+    uint8_t sign = Tools::sign(valE);
+    bool add = false;
+    bool sub = false;
+    cndCodes->setConditionCode(false, OF, error);
+    cndCodes->setConditionCode(false, SF, error);
+    cndCodes->setConditionCode(false, ZF, error);
+    if (sign == 1) {
+       cndCodes->setConditionCode(true, SF, error);
+    }
+    if (valE == 0) {
+       cndCodes->setConditionCode(true, ZF, error);
+    }
+    if (alufun == ADDQ) {
+       add = Tools::addOverflow(aluA, aluB);
+       if (add == true) {
+          cndCodes->setConditionCode(true, OF, error);
+       }
+    }
+    if (alufun == SUBQ) {
+      sub = Tools::subOverflow(aluA, aluB);
+       if (sub == true) {
+          cndCodes->setConditionCode(true, OF, error);
+       }
+    }
+    return cndCodes->getConditionCode((int64_t)valE, error);
 }
 
 

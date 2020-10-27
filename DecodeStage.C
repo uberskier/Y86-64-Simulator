@@ -46,8 +46,8 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    controlSrcB(icode, rB, srcB);
    controlDstE(icode, rB, dstE);
    controlDstM(icode, rA, dstM);
-   controlFwdA(valA, 0);
-   controlFwdB(valB, 0);
+   controlFwdA(valA, srcA);
+   controlFwdB(valB, srcB);
    setEInput(ereg, stat, icode, ifun, valC, valA, valB, dstE, dstM, srcA, srcB);
    return false;
 }
@@ -191,8 +191,10 @@ void DecodeStage::controlDstM(uint64_t icode, uint64_t rA, uint64_t &dstM) {
  * @param: valA - pointer to change valA
  * @param: d_rvalA - value to changer valA
  */
-void DecodeStage::controlFwdA(uint64_t &valA, uint64_t d_rvalA) {
-   valA = d_rvalA;
+void DecodeStage::controlFwdA(uint64_t &valA, uint64_t srcA) {
+   RegisterFile * regfile = RegisterFile::getInstance();
+   bool error;
+   valA = regfile->readRegister((int32_t)srcA, error);
 }
 
 /* controlFwdA
@@ -202,6 +204,8 @@ void DecodeStage::controlFwdA(uint64_t &valA, uint64_t d_rvalA) {
  * @param: valB - pointer to change valB
  * @param: d_rvalB - value to changer valB
  */
-void DecodeStage::controlFwdB(uint64_t &valB, uint64_t d_rvalB) {
-   valB = d_rvalB;
+void DecodeStage::controlFwdB(uint64_t &valB, uint64_t srcB) {
+   RegisterFile * regfile = RegisterFile::getInstance();
+   bool error;
+   valB = regfile->readRegister((int32_t)srcB, error);
 }
