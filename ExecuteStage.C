@@ -112,21 +112,21 @@ uint64_t ExecuteStage::ALUComp(uint64_t alufun, uint64_t aluA, uint64_t aluB) {
       return aluA + aluB;
    }
    if (alufun == SUBQ) {
-      return aluA - aluB;
+      return aluB - aluA;
    }
    if (alufun == ANDQ) {
-      if (aluA == aluB) {
-         return 1;
-      }
-      else {
-         return 0;
-      }
+      //if (aluA == aluB) {
+         return aluB & aluA;
+      //}
+      //else {
+         //return 0;
+      //}
    }
    if (alufun == XORQ) {
-      if (aluA == aluB) {
-         return 0;
-      }
-      return 1;
+      //if (aluA == aluB) {
+         return aluB ^ aluA;
+      //}
+      //return 1;
    }
    return 0;
 }
@@ -136,6 +136,7 @@ uint64_t ExecuteStage::CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint6
     bool error;
     if (alufun == ADDQ) {
       cndCodes->setConditionCode(Tools::addOverflow(aluA, aluB), OF, error);
+      //printf("OF alufun: %d\n", alufun);
     }
     if (alufun == SUBQ) {
       cndCodes->setConditionCode(Tools::subOverflow(aluB, aluA), OF, error);
@@ -200,7 +201,9 @@ uint64_t ExecuteStage::AluB(uint64_t icode, uint64_t E_valB) {
  * @param: E_ifun - ifun value
  */
 uint64_t ExecuteStage::AluFun(uint64_t icode, uint64_t E_ifun) {
+   //printf("icode: %x  ", icode);
    if (icode == IOPQ) {
+      //printf("ifun: %x  ", E_ifun);
       return E_ifun;
    }
    return ADDQ;
