@@ -17,7 +17,7 @@ RegisterFile.o: RegisterFile.h Tools.h
 ConditionCodes.o: ConditionCodes.h Tools.h
 Loader.o: Loader.h Memory.h
 D.o: Instructions.h RegisterFile.h PipeReg.h PipeRegField.h D.h Status.h 
-DecodeStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h E.h Stage.h DecodeStage.h Status.h Debug.h ExecuteStage.h
+DecodeStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h E.h Stage.h DecodeStage.h Status.h Debug.h ExecuteStage.h MemoryStage.h
 E.o: Instructions.h RegisterFile.h PipeReg.h PipeRegField.h E.h Status.h 
 ExecuteStage.o: RegisterFile.h PipeReg.h PipeRegField.h F.h D.h M.h W.h E.h Stage.h ExecuteStage.h Status.h Debug.h Instructions.h ConditionCodes.h Tools.h
 F.o: Instructions.h RegisterFile.h PipeReg.h PipeRegField.h F.h Status.h 
