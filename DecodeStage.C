@@ -33,6 +33,7 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    M * mreg = (M *) pregs[MREG];
    W * wreg = (W *) pregs[WREG];
    ExecuteStage * estage = (ExecuteStage *) stages[ESTAGE];
+   uint64_t e_dstE = estage->gete_dstE(), e_valE = estage->gete_valE();
 
    //dreg values
 
@@ -53,8 +54,8 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    controlDstE(icode, rB, dstE);
    controlDstM(icode, rA, dstM);
 
-   valA = controlFwdA(valA, srcA, mreg, wreg, estage);
-   controlFwdB(valB, srcB);
+   controlFwdA(valA, srcA, mreg, wreg, e_dstE, e_valE);
+   controlFwdB(valB, srcB, mreg, wreg, e_dstE, e_valE);
    setEInput(ereg, stat, icode, ifun, valC, valA, valB, dstE, dstM, srcA, srcB);
    return false;
 }
@@ -198,11 +199,11 @@ void DecodeStage::controlDstM(uint64_t icode, uint64_t rA, uint64_t &dstM) {
  * @param: valA - pointer to change valA
  * @param: d_rvalA - value to changer valA
  */
-uint64_t DecodeStage::controlFwdA(uint64_t &valA, uint64_t srcA, M * mreg, W * wreg, ExecuteStage *estage) {
+void DecodeStage::controlFwdA(uint64_t &valA, uint64_t srcA, M * mreg, W * wreg, uint64_t e_dstE, uint64_t e_valE) {
    RegisterFile * regfile = RegisterFile::getInstance();
 
    uint64_t M_dstE = mreg->getdstE()->getOutput(), M_valE = mreg->getvalE()->getOutput(), W_dstE = wreg->getdstE()->getOutput(),
-   W_valE = wreg->getvalE()->getOutput(), e_dstE = estage->gete_dstE(), e_valE = estage->gete_valE();
+   W_valE = wreg->getvalE()->getOutput();
 
    if (srcA == e_dstE) {
       valA = e_valE;
@@ -226,8 +227,23 @@ uint64_t DecodeStage::controlFwdA(uint64_t &valA, uint64_t srcA, M * mreg, W * w
  * @param: valB - pointer to change valB
  * @param: d_rvalB - value to changer valB
  */
-void DecodeStage::controlFwdB(uint64_t &valB, uint64_t srcB) {
+void DecodeStage::controlFwdB(uint64_t &valB, uint64_t srcB, M * mreg, W * wreg, uint64_t e_dstE, uint64_t e_valE) {
    RegisterFile * regfile = RegisterFile::getInstance();
    bool error;
-   valB = regfile->readRegister((int32_t)srcB, error);
+
+   uint64_t M_dstE = mreg->getdstE()->getOutput(), M_valE = mreg->getvalE()->getOutput(), W_dstE = wreg->getdstE()->getOutput(),
+   W_valE = wreg->getvalE()->getOutput();
+
+   if (srcB == e_dstE) {
+      valB = e_valE;
+   }
+   else if (srcB == M_dstE) {
+      valB = M_valE;
+   }
+   else if (srcB == W_dstE) {
+      valB = W_valE;
+   }
+   else {
+      valB = regfile->readRegister((int32_t)srcB, error);
+   }
 }
