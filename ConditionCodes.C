@@ -86,6 +86,7 @@ void ConditionCodes::setConditionCode(bool value, int32_t ccNum,
       if (value == true) {
          codes = Tools::clearBits(codes, ccNum, ccNum);
          codes = Tools::setBits(codes, ccNum, ccNum);
+         
       }
       else {
          codes = Tools::clearBits(codes, ccNum, ccNum);

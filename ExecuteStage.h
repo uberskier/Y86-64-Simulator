@@ -9,8 +9,8 @@ class ExecuteStage: public Stage
       uint64_t AluFun(uint64_t icode, uint64_t E_ifun);
       bool set_cc(uint64_t icode);
       uint64_t dstEComp(uint64_t icode, uint64_t Cnd, uint64_t E_dstE);
-      uint64_t ALUComp(uint64_t alufun, uint64_t aluA, uint64_t aluB);
-      uint64_t CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint64_t alufun);
+      uint64_t ALUComp(uint64_t alufun, uint64_t aluA, uint64_t aluB, bool setcc);
+      void CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint64_t alufun);
    public:
       bool doClockLow(PipeReg ** pregs, Stage ** stages);
       void doClockHigh(PipeReg ** pregs);

@@ -51,11 +51,7 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    aluB = AluB(icode, valB);
    alufun = AluFun(icode, ifun);
 
-   valE = ALUComp(alufun, aluA, aluB);
-
-   if (set_cc(icode)) {
-      Cnd = CCComp(valE, aluA, aluB, alufun);
-   }
+   valE = ALUComp(alufun, aluA, aluB, set_cc(icode));
 
    
    setMInput(mreg, stat, icode, Cnd, valE, valA, dstE, dstM);
@@ -107,47 +103,42 @@ void ExecuteStage::setMInput(M * mreg, uint64_t stat, uint64_t icode,
    mreg->getdstM()->setInput(dstM);
 }
 
-uint64_t ExecuteStage::ALUComp(uint64_t alufun, uint64_t aluA, uint64_t aluB) {
+uint64_t ExecuteStage::ALUComp(uint64_t alufun, uint64_t aluA, uint64_t aluB, bool setcc) {
+   uint64_t solution = 0;
    if (alufun == ADDQ) {
-      return aluA + aluB;
+      solution = aluA + aluB;
    }
    if (alufun == SUBQ) {
-      return aluB - aluA;
+      solution = aluB - aluA;
    }
    if (alufun == ANDQ) {
-      //if (aluA == aluB) {
-         return aluB & aluA;
-      //}
-      //else {
-         //return 0;
-      //}
+      solution = aluB & aluA;
    }
    if (alufun == XORQ) {
-      //if (aluA == aluB) {
-         return aluB ^ aluA;
-      //}
-      //return 1;
+      solution = aluB ^ aluA;
    }
-   return 0;
+   if (setcc) {
+      CCComp(solution, aluA, aluB, alufun);
+   }
+   return solution;
 }
 
-uint64_t ExecuteStage::CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint64_t alufun) {
+void ExecuteStage::CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint64_t alufun) {
     ConditionCodes * cndCodes = ConditionCodes::getInstance();
-    bool error;
+    bool error = 0;
+    bool value = 0;
+    cndCodes->setConditionCode(false, OF, error);
+    //printf("alufun: %d\n", alufun);
+    cndCodes->setConditionCode(Tools::sign(valE), SF, error);
     if (alufun == ADDQ) {
-      cndCodes->setConditionCode(Tools::addOverflow(aluA, aluB), OF, error);
-      //printf("OF alufun: %d\n", alufun);
+      value = Tools::addOverflow(aluA, aluB);
+      cndCodes->setConditionCode(value, OF, error);
+      //printf("OF alufun: %d value: %d\n", alufun, value);
     }
     if (alufun == SUBQ) {
       cndCodes->setConditionCode(Tools::subOverflow(aluB, aluA), OF, error);
     }
-    cndCodes->setConditionCode(Tools::sign(valE), SF, error);
-    cndCodes->setConditionCode(!valE, ZF, error);
-    if (cndCodes->getConditionCode(OF, error) || cndCodes->getConditionCode(SF, error) || cndCodes->getConditionCode(ZF, error)) {
-       return 1;
-    }
-    return 0;
-    
+    cndCodes->setConditionCode(!valE, ZF, error); 
 }
 
 
