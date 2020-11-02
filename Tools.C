@@ -353,7 +353,7 @@ bool Tools::addOverflow(uint64_t op1, uint64_t op2)
    uint8_t o2 = sign(op2);
    int64_t op11 = op1;
    int64_t op22 = op2;
-   return ((o1 != o2) || (o1 == o2 && ((((op11 + op22) >= 0) && o1 == 1) || (((op11 + op22) < 0) && o1 == 0))));
+   return ((o1 == o2 && ((((op11 + op22) >= 0) && o1 == 1) || (((op11 + op22) < 0) && o1 == 0))));
 }
 
 /**
