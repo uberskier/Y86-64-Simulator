@@ -13,6 +13,7 @@
 #include "Status.h"
 #include "Debug.h"
 #include "Instructions.h"
+#include "ExecuteStage.h"
 
 /*
  * doClockLow:
@@ -28,6 +29,10 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 {
    D * dreg = (D *) pregs[DREG];
    E * ereg = (E *) pregs[EREG];
+   M * mreg = (M *) pregs[MREG];
+   W * wreg = (W *) pregs[WREG];
+   ExecuteStage * execute = (ExecuteStage *) stages[ESTAGE];
+
    //dreg values
 
    //ereg values
@@ -46,7 +51,8 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    controlSrcB(icode, rB, srcB);
    controlDstE(icode, rB, dstE);
    controlDstM(icode, rA, dstM);
-   controlFwdA(valA, srcA);
+
+   controlFwdA(valA, srcA, mreg, wreg, execute);
    controlFwdB(valB, srcB);
    setEInput(ereg, stat, icode, ifun, valC, valA, valB, dstE, dstM, srcA, srcB);
    return false;
@@ -191,10 +197,25 @@ void DecodeStage::controlDstM(uint64_t icode, uint64_t rA, uint64_t &dstM) {
  * @param: valA - pointer to change valA
  * @param: d_rvalA - value to changer valA
  */
-void DecodeStage::controlFwdA(uint64_t &valA, uint64_t srcA) {
+void DecodeStage::controlFwdA(uint64_t &valA, uint64_t srcA, M * mreg, W * wreg, ExecuteStage * exec) {
    RegisterFile * regfile = RegisterFile::getInstance();
-   bool error;
-   valA = regfile->readRegister((int32_t)srcA, error);
+
+   uint64_t M_dstE = mreg->getdstE()->getOutput(), M_valE = mreg->getvalE()->getOutput(), W_dstE = wreg->getdstE()->getOutput(),
+   W_valE = wreg->getvalE()->getOutput(), e_dstE = exec->gete_dstE(), e_valE = exec->gete_valE();
+
+   if (srcA == e_dstE) {
+      valA = e_valE;
+   }
+   else if (srcA == M_dstE) {
+      valA = M_valE;
+   }
+   else if (srcA == W_dstE) {
+      valA = W_valE;
+   }
+   else {
+      bool error;
+      valA = regfile->readRegister((int32_t)srcA, error);
+   }
 }
 
 /* controlFwdA

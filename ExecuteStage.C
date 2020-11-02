@@ -30,7 +30,9 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    M * mreg = (M *) pregs[MREG];
    E * ereg = (E *) pregs[EREG];
    //dreg values
-   uint64_t dstE = RNONE, dstM = RNONE, valE = 0, Cnd = 0;
+   uint64_t dstM = RNONE, Cnd = 0;
+   dstE = RNONE;
+   valE = 0;
    //ereg values
    uint64_t icode = 0, ifun = 0, valA = 0, valC = 0, e_valE = 0, valB = 0;
    uint64_t stat = SAOK;
@@ -228,4 +230,12 @@ uint64_t ExecuteStage::dstEComp(uint64_t icode, uint64_t Cnd, uint64_t E_dstE) {
    else {
       return E_dstE;
    }
+}
+
+uint64_t ExecuteStage::gete_valE() {
+   return valE;
+}
+
+uint64_t ExecuteStage::gete_dstE() {
+   return dstE;
 }
