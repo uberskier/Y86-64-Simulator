@@ -49,6 +49,7 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    uint64_t iCodeiFun = mem->getByte(f_pc, error);
    icode = Tools::getBits(iCodeiFun, 4, 7);
    ifun = Tools::getBits(iCodeiFun, 0, 3);
+
    
    bool needReg = needRegIds(icode);
    bool needVal = needValC(icode);
@@ -194,6 +195,9 @@ uint64_t FetchStage::PCincrement(uint64_t f_pc, bool needReg, bool needVal) {
       if (needVal) {
          return f_pc + 10;
       }
+      else {
+         return f_pc + 2;
+      }
    }
    if (needVal) {
       return f_pc + 9;
@@ -228,29 +232,31 @@ void FetchStage::getRegIds(uint64_t f_pc, uint64_t &rA, uint64_t &rB, uint64_t r
  */
 void FetchStage::buildValC(uint64_t f_pc, uint64_t &valC, bool needReg) {
    Memory * memValC = Memory::getInstance();
+   uint8_t newvalC[8];
    bool error;
+   uint64_t count = 0;
    if (needReg) {
-         uint64_t regval = memValC->getByte(f_pc + 2, error);
-         valC = regval;
-         for (int x = 3; x < 8; x++) {
+         uint8_t regval = memValC->getByte(f_pc + 2, error);
+         newvalC[count] = regval;
+         for (int x = 3; x < 10; x++) {
             regval = memValC->getByte(f_pc + x, error);
             if (!error) {
-               //valC = valC << 8;
-               valC += regval;
-               //printf("valC: %x\n", valC);
+               count += 1;
+               newvalC[count] = regval;
             }
          }
       }
    else {
-         uint64_t valDest = memValC->getByte(f_pc + 1, error);
-         valC = valDest;
+         uint8_t valDest = memValC->getByte(f_pc + 1, error);
+         newvalC[count] = valDest;
          for (int x = 2; x < 8; x++) {
             valDest = memValC->getByte(f_pc + x, error);
             if (!error) {
-               //valC = valC<< 8;
-               valC += valDest;
-               //printf("valC: %x\n", valC);
+               count += 1;
+               newvalC[count] = valDest;
             }
          }
    }
+   valC = Tools::buildLong(newvalC);
+   //printf("valC: %x\n", valC);
 }

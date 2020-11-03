@@ -76,7 +76,7 @@ bool ConditionCodes::getConditionCode(int32_t ccNum, bool & error)
  *         false otherwise
  */
 void ConditionCodes::setConditionCode(bool value, int32_t ccNum, 
-                                      bool & error)
+                                      bool &error)
 {
    
    //Use your setBits and clearBits in Tools.C. 
@@ -86,6 +86,7 @@ void ConditionCodes::setConditionCode(bool value, int32_t ccNum,
       if (value == true) {
          codes = Tools::clearBits(codes, ccNum, ccNum);
          codes = Tools::setBits(codes, ccNum, ccNum);
+         
       }
       else {
          codes = Tools::clearBits(codes, ccNum, ccNum);

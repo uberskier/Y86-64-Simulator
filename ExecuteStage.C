@@ -14,6 +14,7 @@
 #include "Debug.h"
 #include "Instructions.h"
 #include "ConditionCodes.h"
+#include "Tools.h"
 
 /*
  * doClockLow:
@@ -29,7 +30,9 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    M * mreg = (M *) pregs[MREG];
    E * ereg = (E *) pregs[EREG];
    //dreg values
-   uint64_t dstE = RNONE, dstM = RNONE, valE = 0, Cnd = 0;
+   uint64_t dstM = RNONE, Cnd = 0;
+   dstE = RNONE;
+   valE = 0;
    //ereg values
    uint64_t icode = 0, ifun = 0, valA = 0, valC = 0, e_valE = 0, valB = 0;
    uint64_t stat = SAOK;
@@ -50,11 +53,7 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    aluB = AluB(icode, valB);
    alufun = AluFun(icode, ifun);
 
-   valE = ALUComp(alufun, aluA, aluB);
-
-   if (set_cc(icode)) {
-      Cnd = CCComp(valE);
-   }
+   valE = ALUComp(alufun, aluA, aluB, set_cc(icode));
 
    
    setMInput(mreg, stat, icode, Cnd, valE, valA, dstE, dstM);
@@ -106,34 +105,42 @@ void ExecuteStage::setMInput(M * mreg, uint64_t stat, uint64_t icode,
    mreg->getdstM()->setInput(dstM);
 }
 
-uint64_t ExecuteStage::ALUComp(uint64_t alufun, uint64_t aluA, uint64_t aluB) {
+uint64_t ExecuteStage::ALUComp(uint64_t alufun, uint64_t aluA, uint64_t aluB, bool setcc) {
+   uint64_t solution = 0;
    if (alufun == ADDQ) {
-      return aluA + aluB;
+      solution = aluA + aluB;
    }
    if (alufun == SUBQ) {
-      return aluA - aluB;
+      solution = aluB - aluA;
    }
    if (alufun == ANDQ) {
-      if (aluA == aluB) {
-         return 1;
-      }
-      else {
-         return 0;
-      }
+      solution = aluB & aluA;
    }
    if (alufun == XORQ) {
-      if (aluA == aluB) {
-         return 0;
-      }
-      return 1;
+      solution = aluB ^ aluA;
    }
+   if (setcc) {
+      CCComp(solution, aluA, aluB, alufun);
+   }
+   return solution;
 }
 
-uint64_t ExecuteStage::CCComp(uint64_t valE) {
+void ExecuteStage::CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint64_t alufun) {
     ConditionCodes * cndCodes = ConditionCodes::getInstance();
-    bool error;
-    cndCodes->setConditionCode(true, valE, error);
-    return cndCodes->getConditionCode(valE, error);
+    bool error = 0;
+    bool value = 0;
+    cndCodes->setConditionCode(false, OF, error);
+    //printf("alufun: %d\n", alufun);
+    cndCodes->setConditionCode(Tools::sign(valE), SF, error);
+    if (alufun == ADDQ) {
+      value = Tools::addOverflow(aluA, aluB);
+      cndCodes->setConditionCode(value, OF, error);
+      //printf("OF alufun: %d value: %d\n", alufun, value);
+    }
+    if (alufun == SUBQ) {
+      cndCodes->setConditionCode(Tools::subOverflow(aluB, aluA), OF, error);
+    }
+    cndCodes->setConditionCode(!valE, ZF, error); 
 }
 
 
@@ -187,7 +194,9 @@ uint64_t ExecuteStage::AluB(uint64_t icode, uint64_t E_valB) {
  * @param: E_ifun - ifun value
  */
 uint64_t ExecuteStage::AluFun(uint64_t icode, uint64_t E_ifun) {
+   //printf("icode: %x  ", icode);
    if (icode == IOPQ) {
+      //printf("ifun: %x  ", E_ifun);
       return E_ifun;
    }
    return ADDQ;
@@ -221,4 +230,12 @@ uint64_t ExecuteStage::dstEComp(uint64_t icode, uint64_t Cnd, uint64_t E_dstE) {
    else {
       return E_dstE;
    }
+}
+
+uint64_t ExecuteStage::gete_valE() {
+   return valE;
+}
+
+uint64_t ExecuteStage::gete_dstE() {
+   return dstE;
 }
