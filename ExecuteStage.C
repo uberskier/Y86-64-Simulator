@@ -34,9 +34,9 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    dstE = RNONE;
    valE = 0;
    //ereg values
-   uint64_t icode = 0, ifun = 0, valA = 0, valC = 0, e_valE = 0, valB = 0;
+   uint64_t icode = 0, ifun = 0, valA = 0, valC = 0, valB = 0;
    uint64_t stat = SAOK;
-   uint64_t aluA = 0, aluB = 0, alufun = 0, e_dstE = 0;
+   uint64_t aluA = 0, aluB = 0, alufun = 0;
 
    stat = ereg->getstat()->getOutput();
    icode = ereg->geticode()->getOutput();
@@ -46,16 +46,16 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    //srcA = ereg->getsrcA()->getOutput();
    //srcB = ereg->getsrcB()->getOutput();
    valA = ereg->getvalA()->getOutput();
-   dstE = ereg->getdstE()->getOutput();
+   //dstE = ereg->getdstE()->getOutput();
    dstM = ereg->getdstM()->getOutput();
-
+   Cnd = cond(icode, ifun);
    aluA = AluA(valA, valC, icode);
    aluB = AluB(icode, valB);
    alufun = AluFun(icode, ifun);
-
+   dstE = dstEComp(icode, Cnd, ereg->getdstE()->getOutput());
    valE = ALUComp(alufun, aluA, aluB, set_cc(icode));
 
-   
+
    setMInput(mreg, stat, icode, Cnd, valE, valA, dstE, dstM);
    return false;
 }
@@ -238,4 +238,36 @@ uint64_t ExecuteStage::gete_valE() {
 
 uint64_t ExecuteStage::gete_dstE() {
    return dstE;
+}
+
+uint64_t ExecuteStage::cond(uint64_t icode, uint64_t ifun) {
+   ConditionCodes * cndCodes = ConditionCodes::getInstance();
+   bool error = false;
+   bool sf = cndCodes->getConditionCode(SF, error);
+   bool of = cndCodes->getConditionCode(OF, error);
+   bool zf = cndCodes->getConditionCode(ZF, error);
+   if (icode == IJXX || icode == ICMOVXX) {
+      if (ifun == UNCOND) {
+         return 1;
+      }
+      if (ifun == LESSEQ) {
+         return (sf ^ of) | zf;
+      }
+      if (ifun == LESS) {
+         return (sf ^ of);
+      }
+      if (ifun == EQUAL) {
+         return zf;
+      }
+      if (ifun == NOTEQUAL) {
+         return !zf;
+      }
+      if (ifun == GREATEREQ) {
+         return !(sf ^ of);
+      }
+      if (ifun == GREATER) {
+         return !(sf ^ of) & !zf;
+      }
+   }
+   return 0;
 }
