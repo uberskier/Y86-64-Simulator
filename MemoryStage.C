@@ -11,6 +11,8 @@
 #include "MemoryStage.h"
 #include "Status.h"
 #include "Debug.h"
+#include "Instructions.h"
+#include "Memory.h"
 
 /*
  * doClockLow:
@@ -25,18 +27,30 @@ bool MemoryStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 {
    M * mreg = (M *) pregs[MREG];
    W * wreg = (W *) pregs[WREG];
+
+   Memory * mem = Memory::getInstance();
    //dreg values
-   uint64_t dstE = RNONE, dstM = RNONE, valE = 0, valM = 0;
+   uint64_t dstE = RNONE, dstM = RNONE, valE = 0, valM = 0, valA;
    //ereg values
    uint64_t icode = 0;
    uint64_t stat = SAOK;
+   bool error;
 
    stat = mreg->getstat()->getOutput();
    icode = mreg->geticode()->getOutput();
-
+   valA = mreg->getvalA()->getOutput();
    dstE = mreg->getdstE()->getOutput();
    dstM = mreg->getdstM()->getOutput();
    valE = mreg->getvalE()->getOutput();
+
+   uint64_t addr = mem_addr(icode, valE, valA);
+   
+   if (mem_read(icode)) {
+      valM = mem->getLong(addr, error);
+   }
+   if (mem_write(icode)) {
+      mem->putLong(valA, addr, error);
+   }
    
    setWInput(wreg, stat, icode, valE, valM, dstE, dstM);
    return false;
@@ -82,4 +96,23 @@ void MemoryStage::setWInput(W * wreg, uint64_t stat, uint64_t icode,
    wreg->getvalM()->setInput(valM);
    wreg->getdstE()->setInput(dstE);
    wreg->getdstM()->setInput(dstM);
+}
+
+uint64_t MemoryStage::mem_addr(uint64_t icode, uint64_t M_valE, uint64_t M_valA)
+{
+   if (icode == IRMMOVQ || icode == IPUSHQ || icode == ICALL || icode == IMRMOVQ) {
+      return M_valE;
+   }
+   if (icode == IPOPQ || icode == IRET) {
+      return M_valA;
+   }
+   return 0;
+}
+
+bool MemoryStage::mem_read(uint64_t icode) {
+   return (icode == IMRMOVQ || icode == IPOPQ || icode == IRET);
+}
+
+bool MemoryStage::mem_write(uint64_t icode) {
+   return (icode == IRMMOVQ || icode == IPUSHQ || icode == ICALL);
 }
