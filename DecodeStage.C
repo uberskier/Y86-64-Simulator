@@ -194,7 +194,7 @@ void DecodeStage::controlDstM(uint64_t icode, uint64_t rA, uint64_t &dstM) {
 
 /* controlFwdA
  * forwarding changes for valA
- * 
+ * acts weird with rnone at last
  *
  * @param: valA - pointer to change valA
  * @param: d_rvalA - value to changer valA
@@ -204,7 +204,9 @@ uint64_t DecodeStage::controlFwdA(uint64_t srcA, M * mreg, W * wreg, uint64_t e_
 
    uint64_t M_dstE = mreg->getdstE()->getOutput(), M_valE = mreg->getvalE()->getOutput(), W_dstE = wreg->getdstE()->getOutput(),
    W_valE = wreg->getvalE()->getOutput();
-
+   if (srcA == RNONE) {
+      return 0;
+   }
    if (srcA == e_dstE) {
       return e_valE;
    }
@@ -213,9 +215,6 @@ uint64_t DecodeStage::controlFwdA(uint64_t srcA, M * mreg, W * wreg, uint64_t e_
    }
    if (srcA == W_dstE) {
       return W_valE;
-   }
-   if (srcA == RNONE) {
-      return 0;
    }
    bool error;
    return regfile->readRegister((int32_t)srcA, error);
@@ -235,6 +234,9 @@ uint64_t DecodeStage::controlFwdB(uint64_t srcB, M * mreg, W * wreg, uint64_t e_
    uint64_t M_dstE = mreg->getdstE()->getOutput(), M_valE = mreg->getvalE()->getOutput(), W_dstE = wreg->getdstE()->getOutput(),
    W_valE = wreg->getvalE()->getOutput();
 
+   if (srcB == RNONE) {
+      return 0;
+   }
    if (srcB == e_dstE) {
       return e_valE;
    }
@@ -243,9 +245,6 @@ uint64_t DecodeStage::controlFwdB(uint64_t srcB, M * mreg, W * wreg, uint64_t e_
    }
    if (srcB == W_dstE) {
       return W_valE;
-   }
-   if (srcB == RNONE) {
-      return 0;
    }
    return regfile->readRegister((int32_t)srcB, error);
 }

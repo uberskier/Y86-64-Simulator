@@ -54,378 +54,44 @@ Testing /u/css/classes/3481/204/lab10/Tests/addqfor4.yo ... passed
 Testing /u/css/classes/3481/204/lab10/Tests/addqfor5.yo ... passed
 Testing /u/css/classes/3481/204/lab10/Tests/addqfor6.yo ... passed
 Testing /u/css/classes/3481/204/lab10/Tests/rrmovq.yo ... passed
-Testing /u/css/classes/3481/204/lab10/Tests/cmovle.yo ... failed
-152,153c152,153
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000003 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 2 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000003 valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: 2 dstM: f srcA: f srcB: f
-173,175c173,175
-< E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffc valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 3 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000003 valA: 0000000000000000 dstE: 2 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffc valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: 3 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000003 valA: ffffffffffffffff dstE: 2 dstM: f
-196c196
-< M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffc valA: 0000000000000000 dstE: 3 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffc valA: ffffffffffffffff dstE: 3 dstM: f
-488,489c488,489
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: a dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: a dstM: f srcA: f srcB: f
-509,511c509,511
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000001 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: b dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: 0000000000000000 dstE: a dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000001 valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: b dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: ffffffffffffffff dstE: a dstM: f
-532c532
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000001 valA: 0000000000000000 dstE: b dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000001 valA: ffffffffffffffff dstE: b dstM: f
-Testing /u/css/classes/3481/204/lab10/Tests/cmovl.yo ... failed
-152,153c152,153
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000003 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 2 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000003 valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: 2 dstM: f srcA: f srcB: f
-173,175c173,175
-< E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffc valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 3 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000003 valA: 0000000000000000 dstE: 2 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffc valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: 3 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000003 valA: ffffffffffffffff dstE: 2 dstM: f
-196c196
-< M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffc valA: 0000000000000000 dstE: 3 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffc valA: ffffffffffffffff dstE: 3 dstM: f
-320,321c320,321
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 6 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: 6 dstM: f srcA: f srcB: f
-341,343c341,343
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 7 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: 0000000000000000 dstE: 6 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: 7 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: ffffffffffffffff dstE: 6 dstM: f
-364c364
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: 0000000000000000 dstE: 7 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: ffffffffffffffff dstE: 7 dstM: f
-488,489c488,489
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: a dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: a dstM: f srcA: f srcB: f
-509,511c509,511
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000001 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: b dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: 0000000000000000 dstE: a dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000001 valA: ffffffffffffffff
-> E: valB: ffffffffffffffff dstE: b dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: ffffffffffffffff dstE: a dstM: f
-532c532
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000001 valA: 0000000000000000 dstE: b dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000001 valA: ffffffffffffffff dstE: b dstM: f
-Testing /u/css/classes/3481/204/lab10/Tests/cmove.yo ... failed
-152,153c152,153
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000003 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 2 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000003 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 2 dstM: f srcA: f srcB: f
-173,175c173,175
-< E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffc valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 3 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000003 valA: 0000000000000000 dstE: 2 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffc valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 3 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000003 valA: aaaaaaaaaaaaaaaa dstE: 2 dstM: f
-196c196
-< M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffc valA: 0000000000000000 dstE: 3 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffc valA: aaaaaaaaaaaaaaaa dstE: 3 dstM: f
-236,237c236,237
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000005 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 4 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000005 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 4 dstM: f srcA: f srcB: f
-257,259c257,259
-< E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffb valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 5 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000005 valA: 0000000000000000 dstE: 4 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffb valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 5 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000005 valA: aaaaaaaaaaaaaaaa dstE: 4 dstM: f
-280c280
-< M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffb valA: 0000000000000000 dstE: 5 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffb valA: aaaaaaaaaaaaaaaa dstE: 5 dstM: f
-488,489c488,489
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: a dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: a dstM: f srcA: f srcB: f
-509,511c509,511
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000001 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: b dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: 0000000000000000 dstE: a dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000001 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: b dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: aaaaaaaaaaaaaaaa dstE: a dstM: f
-532c532
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000001 valA: 0000000000000000 dstE: b dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000001 valA: aaaaaaaaaaaaaaaa dstE: b dstM: f
-572,573c572,573
-< E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: f dstM: f srcA: f srcB: f
-595c595
-< M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
----
-> M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: aaaaaaaaaaaaaaaa dstE: f dstM: f
-Testing /u/css/classes/3481/204/lab10/Tests/cmovne.yo ... failed
-320,321c320,321
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 6 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 6 dstM: f srcA: f srcB: f
-341,343c341,343
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 7 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: 0000000000000000 dstE: 6 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 7 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: aaaaaaaaaaaaaaaa dstE: 6 dstM: f
-364c364
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: 0000000000000000 dstE: 7 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: aaaaaaaaaaaaaaaa dstE: 7 dstM: f
-404,405c404,405
-< E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 8 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 8 dstM: f srcA: f srcB: f
-425,427c425,427
-< E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 9 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: 0000000000000000 dstE: 8 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 9 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa dstE: 8 dstM: f
-448c448
-< M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: 0000000000000000 dstE: 9 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa dstE: 9 dstM: f
-Testing /u/css/classes/3481/204/lab10/Tests/cmovge.yo ... failed
-236,237c236,237
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000005 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 4 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000005 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 4 dstM: f srcA: f srcB: f
-257,259c257,259
-< E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffb valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 5 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000005 valA: 0000000000000000 dstE: 4 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffb valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 5 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000005 valA: aaaaaaaaaaaaaaaa dstE: 4 dstM: f
-280c280
-< M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffb valA: 0000000000000000 dstE: 5 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffb valA: aaaaaaaaaaaaaaaa dstE: 5 dstM: f
-404,405c404,405
-< E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 8 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 8 dstM: f srcA: f srcB: f
-425,427c425,427
-< E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 9 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: 0000000000000000 dstE: 8 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 9 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa dstE: 8 dstM: f
-448c448
-< M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: 0000000000000000 dstE: 9 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa dstE: 9 dstM: f
-572,573c572,573
-< E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: f dstM: f srcA: f srcB: f
-595c595
-< M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
----
-> M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: aaaaaaaaaaaaaaaa dstE: f dstM: f
-Testing /u/css/classes/3481/204/lab10/Tests/cmovg.yo ... failed
-236,237c236,237
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000005 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 4 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000005 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 4 dstM: f srcA: f srcB: f
-257,259c257,259
-< E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffb valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 5 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000005 valA: 0000000000000000 dstE: 4 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: fffffffffffffffb valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 5 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000005 valA: aaaaaaaaaaaaaaaa dstE: 4 dstM: f
-280c280
-< M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffb valA: 0000000000000000 dstE: 5 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: fffffffffffffffb valA: aaaaaaaaaaaaaaaa dstE: 5 dstM: f
-320,321c320,321
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 6 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 6 dstM: f srcA: f srcB: f
-341,343c341,343
-< E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 7 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: 0000000000000000 dstE: 6 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 8000000000000000 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 7 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: aaaaaaaaaaaaaaaa dstE: 6 dstM: f
-364c364
-< M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: 0000000000000000 dstE: 7 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 8000000000000000 valA: aaaaaaaaaaaaaaaa dstE: 7 dstM: f
-404,405c404,405
-< E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 8 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 8 dstM: f srcA: f srcB: f
-425,427c425,427
-< E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 9 dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: 0000000000000000 dstE: 8 dstM: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: 9 dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa dstE: 8 dstM: f
-448c448
-< M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: 0000000000000000 dstE: 9 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 7fffffffffffffff valA: aaaaaaaaaaaaaaaa dstE: 9 dstM: f
-572,573c572,573
-< E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: aaaaaaaaaaaaaaaa
-> E: valB: aaaaaaaaaaaaaaaa dstE: f dstM: f srcA: f srcB: f
-595c595
-< M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
----
-> M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: aaaaaaaaaaaaaaaa dstE: f dstM: f
+Testing /u/css/classes/3481/204/lab10/Tests/cmovle.yo ... passed
+Testing /u/css/classes/3481/204/lab10/Tests/cmovl.yo ... passed
+Testing /u/css/classes/3481/204/lab10/Tests/cmove.yo ... passed
+Testing /u/css/classes/3481/204/lab10/Tests/cmovne.yo ... passed
+Testing /u/css/classes/3481/204/lab10/Tests/cmovge.yo ... passed
+Testing /u/css/classes/3481/204/lab10/Tests/cmovg.yo ... passed
 Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
-105c105
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000008 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000008 valA: 00000000000000a0
-130c130
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000010 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000010 valA: 00000000000000a8
-132,133c132,133
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000a8 valA: 0000000000000000 dstE: f dstM: 2
+133c133
 < W: stat: 1 icode: 5 valE: 00000000000000a0 valM: 0000000000000001 dstE: f dstM: 1
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000a8 valA: 00000000000000a0 dstE: f dstM: 2
 > W: stat: 1 icode: 5 valE: 00000000000000a0 valM: 0000000000000000 dstE: f dstM: 1
-155c155
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000018 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000018 valA: 00000000000000b0
-157,158c157,158
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000b0 valA: 0000000000000000 dstE: f dstM: 3
+158c158
 < W: stat: 1 icode: 5 valE: 00000000000000a8 valM: 0000000000000002 dstE: f dstM: 2
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000b0 valA: 00000000000000a8 dstE: f dstM: 3
 > W: stat: 1 icode: 5 valE: 00000000000000a8 valM: 0000000000000000 dstE: f dstM: 2
 161c161
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000000 %rbx: 0000000000000000
 ---
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
-180c180
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000020 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000020 valA: 00000000000000b8
-182,183c182,183
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000b8 valA: 0000000000000000 dstE: f dstM: 4
+183c183
 < W: stat: 1 icode: 5 valE: 00000000000000b0 valM: 0000000000000003 dstE: f dstM: 3
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000b8 valA: 00000000000000b0 dstE: f dstM: 4
 > W: stat: 1 icode: 5 valE: 00000000000000b0 valM: 0000000000000000 dstE: f dstM: 3
 186c186
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000000
 ---
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
-205c205
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000028 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000028 valA: 00000000000000c0
-207,208c207,208
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000c0 valA: 0000000000000000 dstE: f dstM: 5
+208c208
 < W: stat: 1 icode: 5 valE: 00000000000000b8 valM: 0000000000000004 dstE: f dstM: 4
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000c0 valA: 00000000000000b8 dstE: f dstM: 5
 > W: stat: 1 icode: 5 valE: 00000000000000b8 valM: 0000000000000000 dstE: f dstM: 4
 211c211
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
 ---
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
-230c230
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000030 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000030 valA: 00000000000000c8
-232,233c232,233
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000c8 valA: 0000000000000000 dstE: f dstM: 6
+233c233
 < W: stat: 1 icode: 5 valE: 00000000000000c0 valM: 0000000000000005 dstE: f dstM: 5
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000c8 valA: 00000000000000c0 dstE: f dstM: 6
 > W: stat: 1 icode: 5 valE: 00000000000000c0 valM: 0000000000000000 dstE: f dstM: 5
 236,237c236,237
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -433,15 +99,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 ---
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-255c255
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000038 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000038 valA: 00000000000000d0
-257,258c257,258
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000d0 valA: 0000000000000000 dstE: f dstM: 7
+258c258
 < W: stat: 1 icode: 5 valE: 00000000000000c8 valM: 0000000000000006 dstE: f dstM: 6
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000d0 valA: 00000000000000c8 dstE: f dstM: 7
 > W: stat: 1 icode: 5 valE: 00000000000000c8 valM: 0000000000000000 dstE: f dstM: 6
 261,262c261,262
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -449,15 +109,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 ---
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-280c280
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000040 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000040 valA: 00000000000000d8
-282,283c282,283
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000d8 valA: 0000000000000000 dstE: f dstM: 8
+283c283
 < W: stat: 1 icode: 5 valE: 00000000000000d0 valM: 0000000000000007 dstE: f dstM: 7
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000d8 valA: 00000000000000d0 dstE: f dstM: 8
 > W: stat: 1 icode: 5 valE: 00000000000000d0 valM: 0000000000000000 dstE: f dstM: 7
 286,287c286,287
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -465,15 +119,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 ---
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-305c305
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000048 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000048 valA: 00000000000000e0
-307,308c307,308
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000e0 valA: 0000000000000000 dstE: f dstM: 9
+308c308
 < W: stat: 1 icode: 5 valE: 00000000000000d8 valM: 0000000000000008 dstE: f dstM: 8
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000e0 valA: 00000000000000d8 dstE: f dstM: 9
 > W: stat: 1 icode: 5 valE: 00000000000000d8 valM: 0000000000000000 dstE: f dstM: 8
 311,312c311,312
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -481,15 +129,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 ---
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-330c330
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000050 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000050 valA: 00000000000000e8
-332,333c332,333
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000e8 valA: 0000000000000000 dstE: f dstM: a
+333c333
 < W: stat: 1 icode: 5 valE: 00000000000000e0 valM: 0000000000000009 dstE: f dstM: 9
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000e8 valA: 00000000000000e0 dstE: f dstM: a
 > W: stat: 1 icode: 5 valE: 00000000000000e0 valM: 0000000000000000 dstE: f dstM: 9
 336,338c336,338
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -499,15 +141,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
 > % r8: 0000000000000000 % r9: 0000000000000000 %r10: 0000000000000000 %r11: 0000000000000000
-355c355
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000058 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000058 valA: 00000000000000f0
-357,358c357,358
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000f0 valA: 0000000000000000 dstE: f dstM: b
+358c358
 < W: stat: 1 icode: 5 valE: 00000000000000e8 valM: 000000000000000a dstE: f dstM: a
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000f0 valA: 00000000000000e8 dstE: f dstM: b
 > W: stat: 1 icode: 5 valE: 00000000000000e8 valM: 0000000000000000 dstE: f dstM: a
 361,363c361,363
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -517,15 +153,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
 > % r8: 0000000000000000 % r9: 0000000000000000 %r10: 0000000000000000 %r11: 0000000000000000
-380c380
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000060 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000060 valA: 00000000000000f8
-382,383c382,383
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000f8 valA: 0000000000000000 dstE: f dstM: c
+383c383
 < W: stat: 1 icode: 5 valE: 00000000000000f0 valM: 000000000000000b dstE: f dstM: b
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000f8 valA: 00000000000000f0 dstE: f dstM: c
 > W: stat: 1 icode: 5 valE: 00000000000000f0 valM: 0000000000000000 dstE: f dstM: b
 386,388c386,388
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -535,15 +165,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
 > % r8: 0000000000000000 % r9: 0000000000000000 %r10: 0000000000000000 %r11: 0000000000000000
-405c405
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000068 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000068 valA: 0000000000000100
-407,408c407,408
-< M: stat: 1 icode: 5 Cnd: 0 valE: 0000000000000100 valA: 0000000000000000 dstE: f dstM: d
+408c408
 < W: stat: 1 icode: 5 valE: 00000000000000f8 valM: 000000000000000c dstE: f dstM: c
 ---
-> M: stat: 1 icode: 5 Cnd: 0 valE: 0000000000000100 valA: 00000000000000f8 dstE: f dstM: d
 > W: stat: 1 icode: 5 valE: 00000000000000f8 valM: 0000000000000000 dstE: f dstM: c
 411,413c411,413
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -553,15 +177,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 > %rax: 00000000000000a0 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
 > % r8: 0000000000000000 % r9: 0000000000000000 %r10: 0000000000000000 %r11: 0000000000000000
-430,433c430,433
-< E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 5 Cnd: 0 valE: 0000000000000108 valA: 0000000000000000 dstE: f dstM: e
+433c433
 < W: stat: 1 icode: 5 valE: 0000000000000100 valM: 000000000000000d dstE: f dstM: d
 ---
-> E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: 0000000000000108
-> E: valB: 0000000000000108 dstE: f dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 5 Cnd: 0 valE: 0000000000000108 valA: 0000000000000100 dstE: f dstM: e
 > W: stat: 1 icode: 5 valE: 0000000000000100 valM: 0000000000000000 dstE: f dstM: d
 436,439c436,439
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -573,11 +191,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
 > % r8: 0000000000000000 % r9: 0000000000000000 %r10: 0000000000000000 %r11: 0000000000000000
 > %r12: 0000000000000000 %r13: 0000000000000000 %r14: 0000000000000000 
-457,458c457,458
-< M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
+458c458
 < W: stat: 1 icode: 5 valE: 0000000000000108 valM: 000000000000000e dstE: f dstM: e
 ---
-> M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: 0000000000000108 dstE: f dstM: f
 > W: stat: 1 icode: 5 valE: 0000000000000108 valM: 0000000000000000 dstE: f dstM: e
 461,464c461,464
 < %rax: 00000000000000a0 %rcx: 0000000000000001 %rdx: 0000000000000002 %rbx: 0000000000000003
@@ -610,25 +226,13 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq1.yo ... failed
 > % r8: 0000000000000000 % r9: 0000000000000000 %r10: 0000000000000000 %r11: 0000000000000000
 > %r12: 0000000000000000 %r13: 0000000000000000 %r14: 0000000000000000 
 Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
-93c93
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000008 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000008 valA: 0000000000000078
-115,118c115,118
-< E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 5 Cnd: 0 valE: 0000000000000080 valA: 0000000000000000 dstE: f dstM: 2
+118c118
 < W: stat: 1 icode: 5 valE: 0000000000000078 valM: 0000000000000001 dstE: f dstM: 1
 ---
-> E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000080
-> E: valB: 0000000000000080 dstE: f dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 5 Cnd: 0 valE: 0000000000000080 valA: 0000000000000078 dstE: f dstM: 2
 > W: stat: 1 icode: 5 valE: 0000000000000078 valM: 0000000000000000 dstE: f dstM: 1
-139,140c139,140
-< M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
+140c140
 < W: stat: 1 icode: 5 valE: 0000000000000080 valM: 0000000000000002 dstE: f dstM: 2
 ---
-> M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000080 dstE: f dstM: f
 > W: stat: 1 icode: 5 valE: 0000000000000080 valM: 0000000000000000 dstE: f dstM: 2
 143c143
 < %rax: 0000000000000078 %rcx: 0000000000000001 %rdx: 0000000000000000 %rbx: 0000000000000000
@@ -658,10 +262,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
 ---
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000078 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
-225c225
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000018 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000018 valA: 0000000000000088
 228c228
 < W: stat: 1 icode: 6 valE: 0000000000000003 valM: 0000000000000000 dstE: 2 dstM: f
 ---
@@ -672,15 +272,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
 ---
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000078 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
-247,250c247,250
-< E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 5 Cnd: 0 valE: 0000000000000090 valA: 0000000000000000 dstE: f dstM: 4
+250c250
 < W: stat: 1 icode: 5 valE: 0000000000000088 valM: 0000000000000003 dstE: f dstM: 3
 ---
-> E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000090
-> E: valB: 0000000000000090 dstE: f dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 5 Cnd: 0 valE: 0000000000000090 valA: 0000000000000088 dstE: f dstM: 4
 > W: stat: 1 icode: 5 valE: 0000000000000088 valM: 0000000000000000 dstE: f dstM: 3
 252,253c252,253
 < ZF: 0 SF: 0 OF: 0
@@ -688,11 +282,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
 ---
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000078 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
-271,272c271,272
-< M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
+272c272
 < W: stat: 1 icode: 5 valE: 0000000000000090 valM: 0000000000000004 dstE: f dstM: 4
 ---
-> M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000090 dstE: f dstM: f
 > W: stat: 1 icode: 5 valE: 0000000000000090 valM: 0000000000000000 dstE: f dstM: 4
 274,275c274,275
 < ZF: 0 SF: 0 OF: 0
@@ -734,10 +326,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000078 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-357c357
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000028 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000028 valA: 0000000000000098
 360c360
 < W: stat: 1 icode: 6 valE: 0000000000000007 valM: 0000000000000000 dstE: 4 dstM: f
 ---
@@ -750,15 +338,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000078 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-379,382c379,382
-< E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000a0 valA: 0000000000000000 dstE: f dstM: 6
+382c382
 < W: stat: 1 icode: 5 valE: 0000000000000098 valM: 0000000000000005 dstE: f dstM: 5
 ---
-> E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 00000000000000a0
-> E: valB: 00000000000000a0 dstE: f dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000a0 valA: 0000000000000098 dstE: f dstM: 6
 > W: stat: 1 icode: 5 valE: 0000000000000098 valM: 0000000000000000 dstE: f dstM: 5
 384,386c384,386
 < ZF: 0 SF: 0 OF: 0
@@ -768,11 +350,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000078 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-403,404c403,404
-< M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
+404c404
 < W: stat: 1 icode: 5 valE: 00000000000000a0 valM: 0000000000000006 dstE: f dstM: 6
 ---
-> M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 00000000000000a0 dstE: f dstM: f
 > W: stat: 1 icode: 5 valE: 00000000000000a0 valM: 0000000000000000 dstE: f dstM: 6
 406,408c406,408
 < ZF: 0 SF: 0 OF: 0
@@ -816,10 +396,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000078 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-489c489
-< E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000038 valA: 0000000000000000
----
-> E: stat: 1 icode: 5 ifun: 0 valC: 0000000000000038 valA: 00000000000000a8
 492c492
 < W: stat: 1 icode: 6 valE: 000000000000000b valM: 0000000000000000 dstE: 6 dstM: f
 ---
@@ -832,15 +408,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000078 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-511,514c511,514
-< E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
-< M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000b0 valA: 0000000000000000 dstE: f dstM: 8
+514c514
 < W: stat: 1 icode: 5 valE: 00000000000000a8 valM: 0000000000000007 dstE: f dstM: 7
 ---
-> E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 00000000000000b0
-> E: valB: 00000000000000b0 dstE: f dstM: f srcA: f srcB: f
-> M: stat: 1 icode: 5 Cnd: 0 valE: 00000000000000b0 valA: 00000000000000a8 dstE: f dstM: 8
 > W: stat: 1 icode: 5 valE: 00000000000000a8 valM: 0000000000000000 dstE: f dstM: 7
 516,518c516,518
 < ZF: 0 SF: 0 OF: 0
@@ -850,11 +420,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/mrmovq2.yo ... failed
 > ZF: 1 SF: 0 OF: 0
 > %rax: 0000000000000078 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
 > %rsp: 0000000000000000 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
-535,536c535,536
-< M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
+536c536
 < W: stat: 1 icode: 5 valE: 00000000000000b0 valM: 0000000000000008 dstE: f dstM: 8
 ---
-> M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 00000000000000b0 dstE: f dstM: f
 > W: stat: 1 icode: 5 valE: 00000000000000b0 valM: 0000000000000000 dstE: f dstM: 8
 538,540c538,540
 < ZF: 0 SF: 0 OF: 0
@@ -1244,34 +812,14 @@ Testing /u/css/classes/3481/204/lab10/Tests/pushqpopq.yo ... failed
 < 1e0: 0000000000000000 0000000000000000 0000000000000020 0000000000000010 
 < 200: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
 Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
-109,110c109,110
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000003 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 2 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000003 valA: 0000000000000138
-> E: valB: 0000000000000138 dstE: 2 dstM: f srcA: f srcB: f
-137c137
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000003 valA: 0000000000000000 dstE: 2 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000003 valA: 0000000000000138 dstE: 2 dstM: f
 155c155
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
-161,162c161,162
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000004 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 3 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000004 valA: 0000000000000140
-> E: valB: 0000000000000140 dstE: 3 dstM: f srcA: f srcB: f
 181c181
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
-189c189
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000004 valA: 0000000000000000 dstE: 3 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000004 valA: 0000000000000140 dstE: 3 dstM: f
 207,209c207,208
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000000 0000000000000000 0000000000000000 
@@ -1279,12 +827,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-214,215c213,214
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000005 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 4 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000005 valA: 0000000000000148
-> E: valB: 0000000000000148 dstE: 4 dstM: f srcA: f srcB: f
 234,236c233,234
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000000 0000000000000000 0000000000000000 
@@ -1292,10 +834,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-243c241
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000005 valA: 0000000000000000 dstE: 4 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000005 valA: 0000000000000148 dstE: 4 dstM: f
 261,263c259,260
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000000 0000000000000000 
@@ -1303,12 +841,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-268,269c265,266
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000006 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 5 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000006 valA: 0000000000000150
-> E: valB: 0000000000000150 dstE: 5 dstM: f srcA: f srcB: f
 288,290c285,286
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000000 0000000000000000 
@@ -1316,10 +848,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-297c293
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000006 valA: 0000000000000000 dstE: 5 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000006 valA: 0000000000000150 dstE: 5 dstM: f
 315,317c311,312
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000000 
@@ -1327,12 +855,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-322,323c317,318
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000007 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 6 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000007 valA: 0000000000000158
-> E: valB: 0000000000000158 dstE: 6 dstM: f srcA: f srcB: f
 342,344c337,338
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000000 
@@ -1340,10 +862,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-351c345
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000007 valA: 0000000000000000 dstE: 6 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000007 valA: 0000000000000158 dstE: 6 dstM: f
 369,371c363,364
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1351,12 +869,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-376,377c369,370
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000008 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 7 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000008 valA: 0000000000000160
-> E: valB: 0000000000000160 dstE: 7 dstM: f srcA: f srcB: f
 396,398c389,390
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1364,10 +876,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-405c397
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000008 valA: 0000000000000000 dstE: 7 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000008 valA: 0000000000000160 dstE: 7 dstM: f
 423,426c415,416
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1376,12 +884,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-431,432c421,422
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000009 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 8 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000009 valA: 0000000000000168
-> E: valB: 0000000000000168 dstE: 8 dstM: f srcA: f srcB: f
 451,454c441,442
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1390,10 +892,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-461c449
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000009 valA: 0000000000000000 dstE: 8 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000009 valA: 0000000000000168 dstE: 8 dstM: f
 479,482c467,468
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1402,12 +900,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-487,488c473,474
-< E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000a valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: 9 dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000a valA: 0000000000000170
-> E: valB: 0000000000000170 dstE: 9 dstM: f srcA: f srcB: f
 507,510c493,494
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1416,10 +908,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-517c501
-< M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000a valA: 0000000000000000 dstE: 9 dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000a valA: 0000000000000170 dstE: 9 dstM: f
 535,538c519,520
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1428,12 +916,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-543,544c525,526
-< E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000b valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: a dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000b valA: 0000000000000178
-> E: valB: 0000000000000178 dstE: a dstM: f srcA: f srcB: f
 563,566c545,546
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1442,10 +924,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-573c553
-< M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000b valA: 0000000000000000 dstE: a dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000b valA: 0000000000000178 dstE: a dstM: f
 591,594c571,572
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1454,12 +932,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-599,600c577,578
-< E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000c valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: b dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000c valA: 0000000000000180
-> E: valB: 0000000000000180 dstE: b dstM: f srcA: f srcB: f
 619,622c597,598
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1468,10 +940,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-629c605
-< M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000c valA: 0000000000000000 dstE: b dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000c valA: 0000000000000180 dstE: b dstM: f
 647,651c623,624
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1481,12 +949,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-656,657c629,630
-< E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000d valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: c dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000d valA: 0000000000000188
-> E: valB: 0000000000000188 dstE: c dstM: f srcA: f srcB: f
 676,680c649,650
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1496,10 +958,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-687c657
-< M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000d valA: 0000000000000000 dstE: c dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000d valA: 0000000000000188 dstE: c dstM: f
 705,709c675,676
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1509,12 +967,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-714,715c681,682
-< E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000e valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: d dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000e valA: 0000000000000190
-> E: valB: 0000000000000190 dstE: d dstM: f srcA: f srcB: f
 734,738c701,702
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1524,10 +976,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-745c709
-< M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000e valA: 0000000000000000 dstE: d dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000e valA: 0000000000000190 dstE: d dstM: f
 763,767c727,728
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1537,12 +985,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-772,773c733,734
-< E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000f valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: e dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 000000000000000f valA: 0000000000000198
-> E: valB: 0000000000000198 dstE: e dstM: f srcA: f srcB: f
 792,796c753,754
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1552,10 +994,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-803c761
-< M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000f valA: 0000000000000000 dstE: e dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 000000000000000f valA: 0000000000000198 dstE: e dstM: f
 821,825c779,780
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1565,12 +1003,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-830,831c785,786
-< E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000010 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: e dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 3 ifun: 0 valC: 0000000000000010 valA: 00000000000001a0
-> E: valB: 00000000000001a0 dstE: e dstM: f srcA: f srcB: f
 850,854c805,806
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1580,10 +1012,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-861c813
-< M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000010 valA: 0000000000000000 dstE: e dstM: f
----
-> M: stat: 1 icode: 3 Cnd: 0 valE: 0000000000000010 valA: 00000000000001a0 dstE: e dstM: f
 879,884c831,832
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1594,12 +1022,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 ---
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
-889,890c837,838
-< E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 0 ifun: 0 valC: 0000000000000000 valA: 00000000000001a8
-> E: valB: 00000000000001a8 dstE: f dstM: f srcA: f srcB: f
 909,914c857,858
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1614,10 +1036,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 < D: stat: 1 icode: 0 ifun: 2 rA: f rB: f valC: 0000000000000000 valP: 139
 ---
 > D: stat: 1 icode: 0 ifun: 0 rA: f rB: f valC: 0000000000000000 valP: 139
-921c865
-< M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
----
-> M: stat: 1 icode: 0 Cnd: 0 valE: 0000000000000000 valA: 00000000000001a8 dstE: f dstM: f
 939,944c883,884
 < 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000002 
 < 140: 0000000000000003 0000000000000004 0000000000000005 0000000000000006 
@@ -1653,17 +1071,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/rmmovq.yo ... failed
 > 120: 00000010fe300000 0070e04000000000 0000000000000000 0000000000000000 
 > 140: 0000000000000000 0000000000000000 0000000000000000 0000000000000000 *
 Testing /u/css/classes/3481/204/lab10/Tests/memfor1.yo ... failed
-105,106c105,106
-< E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000048
-> E: valB: 0000000000000048 dstE: f dstM: f srcA: f srcB: f
-127,128c127,128
-< M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
+128c128
 < W: stat: 1 icode: 5 valE: 0000000000000048 valM: 0000000000000001 dstE: f dstM: 1
 ---
-> M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000048 dstE: f dstM: f
 > W: stat: 1 icode: 5 valE: 0000000000000048 valM: 0000000000000000 dstE: f dstM: 1
 145c145
 < E: stat: 1 icode: 2 ifun: 0 valC: 0000000000000000 valA: 0000000000000001
@@ -1681,12 +1091,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/memfor1.yo ... failed
 < %rax: 0000000000000048 %rcx: 0000000000000001 %rdx: 0000000000000000 %rbx: 0000000000000000
 ---
 > %rax: 0000000000000048 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
-185,186c185,186
-< E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000050
-> E: valB: 0000000000000050 dstE: f dstM: f srcA: f srcB: f
 188c188
 < W: stat: 1 icode: 2 valE: 0000000000000001 valM: 0000000000000000 dstE: 2 dstM: f
 ---
@@ -1695,11 +1099,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/memfor1.yo ... failed
 < %rax: 0000000000000048 %rcx: 0000000000000001 %rdx: 0000000000000000 %rbx: 0000000000000000
 ---
 > %rax: 0000000000000048 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
-207,208c207,208
-< M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
+208c208
 < W: stat: 1 icode: 5 valE: 0000000000000050 valM: 0000000000000002 dstE: f dstM: 3
 ---
-> M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000050 dstE: f dstM: f
 > W: stat: 1 icode: 5 valE: 0000000000000050 valM: 0000000000000000 dstE: f dstM: 3
 211c211
 < %rax: 0000000000000048 %rcx: 0000000000000001 %rdx: 0000000000000001 %rbx: 0000000000000000
@@ -1834,21 +1236,13 @@ Testing /u/css/classes/3481/204/lab10/Tests/memfor1.yo ... failed
 > %rsp: 0000000000000068 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
 > % r8: 0000000000000000 % r9: 0000000000000000 %r10: 0000000000000000 %r11: 0000000000000000
 Testing /u/css/classes/3481/204/lab10/Tests/memfor2.yo ... failed
-100,101c100,101
-< E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000040
-> E: valB: 0000000000000040 dstE: f dstM: f srcA: f srcB: f
 119c119
 < E: stat: 1 icode: 2 ifun: 0 valC: 0000000000000000 valA: 0000000000000001
 ---
 > E: stat: 1 icode: 2 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-121,122c121,122
-< M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
+122c122
 < W: stat: 1 icode: 5 valE: 0000000000000040 valM: 0000000000000001 dstE: f dstM: 1
 ---
-> M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000040 dstE: f dstM: f
 > W: stat: 1 icode: 5 valE: 0000000000000040 valM: 0000000000000000 dstE: f dstM: 1
 140c140
 < M: stat: 1 icode: 2 Cnd: 1 valE: 0000000000000001 valA: 0000000000000001 dstE: 2 dstM: f
@@ -1858,12 +1252,6 @@ Testing /u/css/classes/3481/204/lab10/Tests/memfor2.yo ... failed
 < %rax: 0000000000000040 %rcx: 0000000000000001 %rdx: 0000000000000000 %rbx: 0000000000000000
 ---
 > %rax: 0000000000000040 %rcx: 0000000000000000 %rdx: 0000000000000000 %rbx: 0000000000000000
-157,158c157,158
-< E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-< E: valB: 0000000000000000 dstE: f dstM: f srcA: f srcB: f
----
-> E: stat: 1 icode: 1 ifun: 0 valC: 0000000000000000 valA: 0000000000000048
-> E: valB: 0000000000000048 dstE: f dstM: f srcA: f srcB: f
 160c160
 < W: stat: 1 icode: 2 valE: 0000000000000001 valM: 0000000000000000 dstE: 2 dstM: f
 ---
@@ -1876,11 +1264,9 @@ Testing /u/css/classes/3481/204/lab10/Tests/memfor2.yo ... failed
 < E: stat: 1 icode: 2 ifun: 0 valC: 0000000000000000 valA: 0000000000000002
 ---
 > E: stat: 1 icode: 2 ifun: 0 valC: 0000000000000000 valA: 0000000000000000
-178,179c178,179
-< M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000000 dstE: f dstM: f
+179c179
 < W: stat: 1 icode: 5 valE: 0000000000000048 valM: 0000000000000002 dstE: f dstM: 3
 ---
-> M: stat: 1 icode: 1 Cnd: 0 valE: 0000000000000000 valA: 0000000000000048 dstE: f dstM: f
 > W: stat: 1 icode: 5 valE: 0000000000000048 valM: 0000000000000000 dstE: f dstM: 3
 182c182
 < %rax: 0000000000000040 %rcx: 0000000000000001 %rdx: 0000000000000001 %rbx: 0000000000000000
@@ -1993,7 +1379,7 @@ Testing /u/css/classes/3481/204/lab10/Tests/memfor2.yo ... failed
 > %rsp: 0000000000000060 %rbp: 0000000000000000 %rsi: 0000000000000000 %rdi: 0000000000000000
 > % r8: 0000000000000000 % r9: 0000000000000000 %r10: 0000000000000000 %r11: 0000000000000000
  
-28 passed out of 44 tests.
+34 passed out of 44 tests.
 Files saved in your Outputs directory.
 Input files end with a .yo.
 Your output files end with a .sdump.
