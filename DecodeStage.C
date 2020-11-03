@@ -34,11 +34,13 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    W * wreg = (W *) pregs[WREG];
    ExecuteStage * estage = (ExecuteStage *) stages[ESTAGE];
    uint64_t e_dstE = estage->gete_dstE(), e_valE = estage->gete_valE();
+   MemoryStage * mstage = (MemoryStage *) stages[MSTAGE];
+   uint64_t m_valM = mstage->getm_valM();
 
    //dreg values
 
    //ereg values
-   uint64_t icode = 0, ifun = 0, valC = 0, valA = 0, valB = 0;
+   uint64_t icode = 0, ifun = 0, valC = 0, valA = 0, valB = 0, valP = 0;
    uint64_t dstE = RNONE,  dstM = RNONE, stat = SAOK, srcA = RNONE, srcB = RNONE, rA = RNONE, rB = RNONE;
 
    stat = dreg->getstat()->getOutput();
@@ -47,6 +49,7 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    valC = dreg->getvalC()->getOutput();
    rA = dreg->getrA()->getOutput();
    rB = dreg->getrB()->getOutput();
+   valP = dreg->getvalP()->getOutput();
 
 
    controlSrcA(icode, rA, srcA);
@@ -54,8 +57,8 @@ bool DecodeStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    controlDstE(icode, rB, dstE);
    controlDstM(icode, rA, dstM);
 
-   valA = controlFwdA(srcA, mreg, wreg, e_dstE, e_valE);
-   valB = controlFwdB(srcB, mreg, wreg, e_dstE, e_valE);
+   valA = controlFwdA(srcA, mreg, wreg, e_dstE, e_valE, valP, m_valM, icode);
+   valB = controlFwdB(srcB, mreg, wreg, e_dstE, e_valE, m_valM);
    setEInput(ereg, stat, icode, ifun, valC, valA, valB, dstE, dstM, srcA, srcB);
    return false;
 }
@@ -199,19 +202,29 @@ void DecodeStage::controlDstM(uint64_t icode, uint64_t rA, uint64_t &dstM) {
  * @param: valA - pointer to change valA
  * @param: d_rvalA - value to changer valA
  */
-uint64_t DecodeStage::controlFwdA(uint64_t srcA, M * mreg, W * wreg, uint64_t e_dstE, uint64_t e_valE) {
+uint64_t DecodeStage::controlFwdA(uint64_t srcA, M * mreg, W * wreg, uint64_t e_dstE, uint64_t e_valE, uint64_t valP, uint64_t m_valM, uint64_t icode) {
    RegisterFile * regfile = RegisterFile::getInstance();
 
    uint64_t M_dstE = mreg->getdstE()->getOutput(), M_valE = mreg->getvalE()->getOutput(), W_dstE = wreg->getdstE()->getOutput(),
-   W_valE = wreg->getvalE()->getOutput();
-   if (srcA == RNONE) {
+   W_valE = wreg->getvalE()->getOutput(), M_dstM = mreg->getdstM()->getOutput(),
+   W_dstM = wreg->getdstM()->getOutput(), W_valM = wreg->getvalM()->getOutput();
+   if (icode == ICALL || icode == IJXX) {
+      return valP;
+   }
+      if (srcA == RNONE) {
       return 0;
    }
    if (srcA == e_dstE) {
       return e_valE;
    }
+   if (srcA == M_dstM) {
+      return m_valM;
+   }
    if (srcA == M_dstE) {
       return M_valE;
+   }
+   if (srcA == W_dstM) {
+      return W_valM;
    }
    if (srcA == W_dstE) {
       return W_valE;
@@ -227,12 +240,13 @@ uint64_t DecodeStage::controlFwdA(uint64_t srcA, M * mreg, W * wreg, uint64_t e_
  * @param: valB - pointer to change valB
  * @param: d_rvalB - value to changer valB
  */
-uint64_t DecodeStage::controlFwdB(uint64_t srcB, M * mreg, W * wreg, uint64_t e_dstE, uint64_t e_valE) {
+uint64_t DecodeStage::controlFwdB(uint64_t srcB, M * mreg, W * wreg, uint64_t e_dstE, uint64_t e_valE, uint64_t m_valM) {
    RegisterFile * regfile = RegisterFile::getInstance();
    bool error;
 
    uint64_t M_dstE = mreg->getdstE()->getOutput(), M_valE = mreg->getvalE()->getOutput(), W_dstE = wreg->getdstE()->getOutput(),
-   W_valE = wreg->getvalE()->getOutput();
+   W_valE = wreg->getvalE()->getOutput(), M_dstM = mreg->getdstM()->getOutput(),
+   W_dstM = wreg->getdstM()->getOutput(), W_valM = wreg->getvalM()->getOutput();
 
    if (srcB == RNONE) {
       return 0;
@@ -240,8 +254,14 @@ uint64_t DecodeStage::controlFwdB(uint64_t srcB, M * mreg, W * wreg, uint64_t e_
    if (srcB == e_dstE) {
       return e_valE;
    }
+   if (srcB == M_dstM) {
+      return m_valM;
+   }
    if (srcB == M_dstE) {
       return M_valE;
+   }
+   if (srcB == W_dstM) {
+      return W_valM;
    }
    if (srcB == W_dstE) {
       return W_valE;

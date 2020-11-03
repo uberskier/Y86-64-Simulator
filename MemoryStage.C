@@ -116,3 +116,7 @@ bool MemoryStage::mem_read(uint64_t icode) {
 bool MemoryStage::mem_write(uint64_t icode) {
    return (icode == IRMMOVQ || icode == IPUSHQ || icode == ICALL);
 }
+
+uint64_t MemoryStage::getm_valM() {
+   return valM;
+}
