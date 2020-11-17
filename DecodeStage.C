@@ -147,7 +147,7 @@ void DecodeStage::controlSrcA(uint64_t icode, uint64_t rA, uint64_t &srcA) {
  * @param: srcB - pointer to srcB to change
  */
 void DecodeStage::controlSrcB(uint64_t icode, uint64_t rB, uint64_t &srcB) {
-   if (icode == IRMMOVQ || icode == IOPQ || icode == IMRMOVQ) {
+   if (icode == IRMMOVQ || icode == IOPQ || icode == IMRMOVQ) { 
       srcB = rB;
    }
    else if (icode == IPOPQ || icode == IRET || icode == ICALL || icode == IPUSHQ) {
@@ -199,8 +199,14 @@ void DecodeStage::controlDstM(uint64_t icode, uint64_t rA, uint64_t &dstM) {
  * forwarding changes for valA
  * acts weird with rnone at last
  *
- * @param: valA - pointer to change valA
- * @param: d_rvalA - value to changer valA
+ * @param: srcA - srcA
+ * @param: M * mreg - memory register
+ * @param: W * wreg - writeback register
+ * @param: e_dstE - dstE
+ * @param: e_valE = valE
+ * @param: valP - valP
+ * @param: m_valM - valM
+ * @param: icode - icode
  */
 uint64_t DecodeStage::controlFwdA(uint64_t srcA, M * mreg, W * wreg, uint64_t e_dstE, uint64_t e_valE, uint64_t valP, uint64_t m_valM, uint64_t icode) {
    RegisterFile * regfile = RegisterFile::getInstance();
@@ -211,7 +217,7 @@ uint64_t DecodeStage::controlFwdA(uint64_t srcA, M * mreg, W * wreg, uint64_t e_
    if (icode == ICALL || icode == IJXX) {
       return valP;
    }
-      if (srcA == RNONE) {
+   if (srcA == RNONE) {
       return 0;
    }
    if (srcA == e_dstE) {
