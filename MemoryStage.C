@@ -30,7 +30,8 @@ bool MemoryStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 
    Memory * mem = Memory::getInstance();
    //dreg values
-   uint64_t dstE = RNONE, dstM = RNONE, valE = 0, valM = 0, valA;
+   uint64_t dstE = RNONE, dstM = RNONE, valE = 0, valA;
+   valM = 0;
    //ereg values
    uint64_t icode = 0;
    uint64_t stat = SAOK;
@@ -47,6 +48,7 @@ bool MemoryStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    
    if (mem_read(icode)) {
       valM = mem->getLong(addr, error);
+      //printf("valM in M %x\n", valM);
    }
    if (mem_write(icode)) {
       mem->putLong(valA, addr, error);

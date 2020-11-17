@@ -224,6 +224,7 @@ uint64_t DecodeStage::controlFwdA(uint64_t srcA, M * mreg, W * wreg, uint64_t e_
       return e_valE;
    }
    if (srcA == M_dstM) {
+      //printf("check: %x\n", m_valM);
       return m_valM;
    }
    if (srcA == M_dstE) {
