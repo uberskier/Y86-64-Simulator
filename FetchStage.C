@@ -34,7 +34,8 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    W * wreg = (W *) pregs[WREG];
 
    uint64_t f_pc = 0, icode = 0, ifun = 0, valC = 0, valP = 0;
-   uint64_t rA = RNONE, rB = RNONE, stat = SAOK;
+   uint64_t rA = RNONE, rB = RNONE;
+   bool mem_error = false;
 
    //code missing here to select the value of the PC
    //and fetch the instruction from memory
@@ -43,13 +44,21 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    //The lab assignment describes what methods need to be
    //written.
    
-   bool error;
+   bool error = false;
    f_pc = selectPC(freg, mreg, wreg);
    Memory * mem = Memory::getInstance();
    uint64_t iCodeiFun = mem->getByte(f_pc, error);
-   icode = Tools::getBits(iCodeiFun, 4, 7);
-   ifun = Tools::getBits(iCodeiFun, 0, 3);
+   if (error) {
+      icode = INOP;
+      ifun = FNONE;
+   }
+   else {
+      icode = Tools::getBits(iCodeiFun, 4, 7);
+      ifun = Tools::getBits(iCodeiFun, 0, 3);
+   }
 
+   bool instr_valid = instr_validate(icode);
+   uint64_t stat = getStat(error, instr_valid, icode);
    
    bool needReg = needRegIds(icode);
    bool needVal = needValC(icode);
@@ -63,6 +72,7 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    if (needVal) {
       buildValC(f_pc, valC, needReg);
    }
+
    //The value passed to setInput below will need to be changed
    freg->getpredPC()->setInput(predictPC(icode, valC, valP));
    
@@ -258,5 +268,23 @@ void FetchStage::buildValC(uint64_t f_pc, uint64_t &valC, bool needReg) {
          }
    }
    valC = Tools::buildLong(newvalC);
-   //printf("valC: %x\n", valC);
+}
+
+bool FetchStage::instr_validate(uint64_t icode) {
+   return (icode == INOP || icode == IHALT || icode == IRRMOVQ || icode == IIRMOVQ 
+                         || icode == IRMMOVQ || icode == IMRMOVQ || icode == IOPQ 
+                         || icode == IJXX || icode == ICALL || icode == IRET || icode == IPUSHQ || icode == IPOPQ);
+}
+
+uint64_t FetchStage::getStat(bool error, bool instr_valid, bool icode) {
+   if (error) {
+      return SADR;
+   }
+   if (!instr_valid) {
+      return SINS;
+   }
+   if (icode == IHALT) {
+      return SHLT;
+   }
+   return SAOK;
 }

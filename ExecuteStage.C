@@ -15,6 +15,7 @@
 #include "Instructions.h"
 #include "ConditionCodes.h"
 #include "Tools.h"
+#include "MemoryStage.h"
 
 /*
  * doClockLow:
@@ -29,14 +30,17 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 {
    M * mreg = (M *) pregs[MREG];
    E * ereg = (E *) pregs[EREG];
+   W * wreg = (W *) pregs[WREG];
+   MemoryStage * mstage = (MemoryStage *) stages[MSTAGE];
+   uint64_t m_stat = mstage->getm_stat();
+   uint64_t W_stat = wreg->getstat()->getOutput();
    //dreg values
    uint64_t dstM = RNONE, Cnd = 0;
    dstE = RNONE;
    valE = 0;
    //ereg values
    uint64_t icode = 0, ifun = 0, valA = 0, valC = 0, valB = 0;
-   uint64_t stat = SAOK;
-   uint64_t aluA = 0, aluB = 0, alufun = 0;
+   uint64_t aluA = 0, aluB = 0, alufun = 0, stat = SAOK;
 
    stat = ereg->getstat()->getOutput();
    icode = ereg->geticode()->getOutput();
@@ -48,13 +52,16 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    valA = ereg->getvalA()->getOutput();
    //dstE = ereg->getdstE()->getOutput();
    dstM = ereg->getdstM()->getOutput();
+
+   M_bubble = calcControlSig(m_stat, W_stat);
    Cnd = cond(icode, ifun);
    aluA = AluA(valA, valC, icode);
    aluB = AluB(icode, valB);
    alufun = AluFun(icode, ifun);
    dstE = dstEComp(icode, Cnd, ereg->getdstE()->getOutput());
-   valE = ALUComp(alufun, aluA, aluB, set_cc(icode));
-
+   valE = ALUComp(alufun, aluA, aluB, set_cc(icode, m_stat, W_stat));
+   printf("icode: %d\n", icode);
+   printf("set_cc: %d, m_stat:%d, W_stat:%d\n", set_cc(icode, m_stat, W_stat), m_stat, W_stat);
 
    setMInput(mreg, stat, icode, Cnd, valE, valA, dstE, dstM);
    return false;
@@ -69,14 +76,24 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 void ExecuteStage::doClockHigh(PipeReg ** pregs)
 {
    M * mreg = (M *) pregs[MREG];
-
-   mreg->getstat()->normal();
-   mreg->geticode()->normal();
-   mreg->getCnd()->normal();
-   mreg->getvalE()->normal();
-   mreg->getvalA()->normal();
-   mreg->getdstE()->normal();
-   mreg->getdstM()->normal();
+   if (M_bubble) {
+      mreg->getstat()->bubble(SAOK);
+      mreg->geticode()->bubble(INOP);
+      mreg->getCnd()->bubble();
+      mreg->getvalE()->bubble();
+      mreg->getvalA()->bubble();
+      mreg->getdstE()->bubble(RNONE);
+      mreg->getdstM()->bubble(RNONE);
+   }
+   else {
+      mreg->getstat()->normal();
+      mreg->geticode()->normal();
+      mreg->getCnd()->normal();
+      mreg->getvalE()->normal();
+      mreg->getvalA()->normal();
+      mreg->getdstE()->normal();
+      mreg->getdstM()->normal();
+   }
 }
 
 /* setMInput
@@ -129,13 +146,11 @@ void ExecuteStage::CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint64_t 
     ConditionCodes * cndCodes = ConditionCodes::getInstance();
     bool error = 0;
     bool value = 0;
-    cndCodes->setConditionCode(false, OF, error);
-    //printf("alufun: %d\n", alufun);
     cndCodes->setConditionCode(Tools::sign(valE), SF, error);
+    printf("sign: %d, result: %d\n", Tools::sign(valE), valE);
     if (alufun == ADDQ) {
       value = Tools::addOverflow(aluA, aluB);
       cndCodes->setConditionCode(value, OF, error);
-      //printf("OF alufun: %d value: %d\n", alufun, value);
     }
     if (alufun == SUBQ) {
       cndCodes->setConditionCode(Tools::subOverflow(aluB, aluA), OF, error);
@@ -208,8 +223,8 @@ uint64_t ExecuteStage::AluFun(uint64_t icode, uint64_t E_ifun) {
  *
  * @param: icode - icode instruction
  */
-bool ExecuteStage::set_cc(uint64_t icode) {
-   if (icode == IOPQ) {
+bool ExecuteStage::set_cc(uint64_t icode, uint64_t m_stat, uint64_t W_stat) {
+   if ((icode == IOPQ) && (m_stat != SADR || m_stat != SINS || m_stat != SHLT) && (W_stat != SADR || W_stat != SINS || W_stat != SHLT)) {
       return true;
    }
    else {
@@ -270,4 +285,8 @@ uint64_t ExecuteStage::cond(uint64_t icode, uint64_t ifun) {
       }
    }
    return 0;
+}
+
+bool ExecuteStage::calcControlSig(uint64_t m_stat,uint64_t W_stat) {
+   return ((m_stat == SADR || m_stat == SINS || m_stat == SHLT) || (W_stat == SADR || W_stat == SINS || W_stat == SHLT));
 }

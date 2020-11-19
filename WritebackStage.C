@@ -28,17 +28,17 @@ bool WritebackStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    //commented code for unused variables
 
    //uint64_t  valM = 0, dstM = RNONE;
-   uint64_t icode = 0;
+   uint64_t stat = SAOK;
 
-   icode = wreg->geticode()->getOutput();
-   //stat = wreg->getstat()->getOutput();
+   //icode = wreg->geticode()->getOutput();
+   stat = wreg->getstat()->getOutput();
    //valE = wreg->getvalE()->getOutput();
    //valM = wreg->getvalM()->getOutput();
    //dstE = wreg->getdstE()->getOutput();
    //dstM = wreg->getdstM()->getOutput();
 
    
-   if (icode == IHALT) {
+   if (stat != SAOK) {
       return true;
    }
    return false;

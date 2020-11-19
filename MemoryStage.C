@@ -34,8 +34,8 @@ bool MemoryStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    valM = 0;
    //ereg values
    uint64_t icode = 0;
-   uint64_t stat = SAOK;
-   bool error;
+   bool error = false;
+   stat = SAOK;
 
    stat = mreg->getstat()->getOutput();
    icode = mreg->geticode()->getOutput();
@@ -48,10 +48,15 @@ bool MemoryStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    
    if (mem_read(icode)) {
       valM = mem->getLong(addr, error);
-      //printf("valM in M %x\n", valM);
+      if (error) {
+         stat = SADR;
+      }
    }
    if (mem_write(icode)) {
       mem->putLong(valA, addr, error);
+      if (error) {
+         stat = SADR;
+      }
    }
    
    setWInput(wreg, stat, icode, valE, valM, dstE, dstM);
@@ -121,4 +126,8 @@ bool MemoryStage::mem_write(uint64_t icode) {
 
 uint64_t MemoryStage::getm_valM() {
    return valM;
+}
+
+uint64_t MemoryStage::getm_stat() {
+   return stat;
 }
