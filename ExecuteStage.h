@@ -13,6 +13,7 @@ class ExecuteStage: public Stage
       void CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint64_t alufun);
       uint64_t dstE;
       uint64_t valE;
+      uint64_t cond(uint64_t icode, uint64_t ifun);
    public:
       bool doClockLow(PipeReg ** pregs, Stage ** stages);
       void doClockHigh(PipeReg ** pregs);

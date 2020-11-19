@@ -27,7 +27,7 @@ bool WritebackStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    W * wreg = (W *) pregs[WREG];
    //commented code for unused variables
 
-   //, stat = 0, valE = 0, valM = 0, dstE = RNONE, dstM = RNONE;
+   //uint64_t  valM = 0, dstM = RNONE;
    uint64_t icode = 0;
 
    icode = wreg->geticode()->getOutput();
@@ -37,7 +37,7 @@ bool WritebackStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    //dstE = wreg->getdstE()->getOutput();
    //dstM = wreg->getdstM()->getOutput();
 
-
+   
    if (icode == IHALT) {
       return true;
    }
@@ -55,8 +55,11 @@ void WritebackStage::doClockHigh(PipeReg ** pregs)
    W * wreg = (W *) pregs[WREG];
    uint64_t dstE = wreg->getdstE()->getOutput();
    uint64_t valE = wreg->getvalE()->getOutput();
+   uint64_t valM = wreg->getvalM()->getOutput();
+   uint64_t dstM = wreg->getdstM()->getOutput();
    bool error;
    RegisterFile * regFile = RegisterFile::getInstance();
    regFile->writeRegister(valE, dstE, error);
+   regFile->writeRegister(valM, dstM, error);
 }
 
