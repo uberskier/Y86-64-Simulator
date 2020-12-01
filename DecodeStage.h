@@ -10,8 +10,14 @@ class DecodeStage: public Stage
       void controlDstM(uint64_t icode, uint64_t rA, uint64_t &dstM);
       uint64_t controlFwdA(uint64_t srcA, M * mreg, W * wreg, uint64_t e_dstE, uint64_t e_valE, uint64_t valP, uint64_t m_valM, uint64_t icode);
       uint64_t controlFwdB(uint64_t srcB, M * mreg, W * wreg, uint64_t e_dstE, uint64_t e_valE, uint64_t m_valM);
+      uint64_t srcA;
+      uint64_t srcB;
+      bool E_bubble;
+      void calculateControlSignals(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, uint64_t d_srcB);
    public:
       bool doClockLow(PipeReg ** pregs, Stage ** stages);
       void doClockHigh(PipeReg ** pregs);
+      uint64_t getd_srcB();
+      uint64_t getd_srcA();
       
 };

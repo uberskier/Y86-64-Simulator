@@ -15,6 +15,11 @@ class FetchStage: public Stage
       void buildValC(uint64_t f_pc, uint64_t &valC, bool needReg);
       bool instr_validate(uint64_t icode);
       uint64_t getStat(bool error, bool instr_valid, bool icode);
+      bool F_stall;
+      bool D_stall;
+      bool getF_stall(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, uint64_t d_srcB);
+      bool getD_stall(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, uint64_t d_srcB);
+      void calculateControlSignals(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, uint64_t d_srcB);
    public:
       bool doClockLow(PipeReg ** pregs, Stage ** stages);
       void doClockHigh(PipeReg ** pregs);

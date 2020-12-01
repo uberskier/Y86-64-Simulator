@@ -14,6 +14,8 @@
 #include "Instructions.h"
 #include "Tools.h"
 #include "Memory.h"
+#include "E.h"
+#include "DecodeStage.h"
 
 
 /*
@@ -32,10 +34,15 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    D * dreg = (D *) pregs[DREG];
    M * mreg = (M *) pregs[MREG];
    W * wreg = (W *) pregs[WREG];
+   E * ereg = (E *) pregs[EREG];
 
    uint64_t f_pc = 0, icode = 0, ifun = 0, valC = 0, valP = 0;
    uint64_t rA = RNONE, rB = RNONE;
    bool mem_error = false;
+   uint64_t E_icode = ereg->geticode()->getOutput(), E_dstM = ereg->getdstM()->getOutput();
+
+   DecodeStage * dstage = (DecodeStage *) stages[DSTAGE];
+   uint64_t d_srcA = dstage->getd_srcA(), d_srcB = dstage->getd_srcB();
 
    //code missing here to select the value of the PC
    //and fetch the instruction from memory
@@ -73,6 +80,8 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
       buildValC(f_pc, valC, needReg);
    }
 
+   calculateControlSignals(E_icode, E_dstM, d_srcA, d_srcB);
+
    //The value passed to setInput below will need to be changed
    freg->getpredPC()->setInput(predictPC(icode, valC, valP));
    
@@ -92,15 +101,18 @@ void FetchStage::doClockHigh(PipeReg ** pregs)
 {
    F * freg = (F *) pregs[FREG];
    D * dreg = (D *) pregs[DREG];
-
-   freg->getpredPC()->normal();
-   dreg->getstat()->normal();
-   dreg->geticode()->normal();
-   dreg->getifun()->normal();
-   dreg->getrA()->normal();
-   dreg->getrB()->normal();
-   dreg->getvalC()->normal();
-   dreg->getvalP()->normal();
+   if (!F_stall) {
+      freg->getpredPC()->normal();
+   }
+   if (!D_stall) {
+      dreg->getstat()->normal();
+      dreg->geticode()->normal();
+      dreg->getifun()->normal();
+      dreg->getrA()->normal();
+      dreg->getrB()->normal();
+      dreg->getvalC()->normal();
+      dreg->getvalP()->normal();
+   }
 }
 
 /* setDInput
@@ -287,4 +299,23 @@ uint64_t FetchStage::getStat(bool error, bool instr_valid, bool icode) {
       return SHLT;
    }
    return SAOK;
+}
+
+bool FetchStage::getF_stall(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, uint64_t d_srcB) {
+   if ((E_icode == IMRMOVQ || E_icode == IPOPQ) && (E_dstM == d_srcA || E_dstM == d_srcB)) {
+      return true;
+   }
+   return false;
+}
+
+bool FetchStage::getD_stall(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, uint64_t d_srcB) {
+   if ((E_icode == IMRMOVQ || E_icode == IPOPQ) && (E_dstM == d_srcA || E_dstM == d_srcB)) {
+      return true;
+   }
+   return false;
+}
+
+void FetchStage::calculateControlSignals(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, uint64_t d_srcB) {
+   F_stall = getF_stall(E_icode, E_dstM, d_srcA, d_srcB);
+   D_stall = getD_stall(E_icode, E_dstM, d_srcA, d_srcB);
 }
