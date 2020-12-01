@@ -60,8 +60,9 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    alufun = AluFun(icode, ifun);
    dstE = dstEComp(icode, Cnd, ereg->getdstE()->getOutput());
    valE = ALUComp(alufun, aluA, aluB, set_cc(icode, m_stat, W_stat));
-   printf("icode: %d\n", icode);
-   printf("set_cc: %d, m_stat:%d, W_stat:%d\n", set_cc(icode, m_stat, W_stat), m_stat, W_stat);
+
+   //printf("icode: %d\n", icode);
+   //printf("set_cc: %d, m_stat:%d, W_stat:%d\n", set_cc(icode, m_stat, W_stat), m_stat, W_stat);
 
    setMInput(mreg, stat, icode, Cnd, valE, valA, dstE, dstM);
    return false;
@@ -147,7 +148,7 @@ void ExecuteStage::CCComp(uint64_t valE, uint64_t aluA, uint64_t aluB, uint64_t 
     bool error = 0;
     bool value = 0;
     cndCodes->setConditionCode(Tools::sign(valE), SF, error);
-    printf("sign: %d, result: %d\n", Tools::sign(valE), valE);
+    //printf("sign: %d, result: %d\n", Tools::sign(valE), valE);
     if (alufun == ADDQ) {
       value = Tools::addOverflow(aluA, aluB);
       cndCodes->setConditionCode(value, OF, error);
@@ -224,7 +225,7 @@ uint64_t ExecuteStage::AluFun(uint64_t icode, uint64_t E_ifun) {
  * @param: icode - icode instruction
  */
 bool ExecuteStage::set_cc(uint64_t icode, uint64_t m_stat, uint64_t W_stat) {
-   if ((icode == IOPQ) && (m_stat != SADR || m_stat != SINS || m_stat != SHLT) && (W_stat != SADR || W_stat != SINS || W_stat != SHLT)) {
+   if ((icode == IOPQ) && (m_stat != SADR && m_stat != SINS && m_stat != SHLT) && (W_stat != SADR && W_stat != SINS && W_stat != SHLT)) {
       return true;
    }
    else {
