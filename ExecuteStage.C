@@ -35,7 +35,8 @@ bool ExecuteStage::doClockLow(PipeReg ** pregs, Stage ** stages)
    uint64_t m_stat = mstage->getm_stat();
    uint64_t W_stat = wreg->getstat()->getOutput();
    //dreg values
-   uint64_t dstM = RNONE, Cnd = 0;
+   uint64_t dstM = RNONE;
+   Cnd = 0;
    dstE = RNONE;
    valE = 0;
    //ereg values
@@ -290,4 +291,8 @@ uint64_t ExecuteStage::cond(uint64_t icode, uint64_t ifun) {
 
 bool ExecuteStage::calcControlSig(uint64_t m_stat,uint64_t W_stat) {
    return ((m_stat == SADR || m_stat == SINS || m_stat == SHLT) || (W_stat == SADR || W_stat == SINS || W_stat == SHLT));
+}
+
+uint64_t ExecuteStage::gete_Cnd() {
+   return Cnd;
 }

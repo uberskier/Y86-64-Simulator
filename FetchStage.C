@@ -16,6 +16,7 @@
 #include "Memory.h"
 #include "E.h"
 #include "DecodeStage.h"
+#include "ExecuteStage.h"
 
 
 /*
@@ -43,6 +44,9 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
 
    DecodeStage * dstage = (DecodeStage *) stages[DSTAGE];
    uint64_t d_srcA = dstage->getd_srcA(), d_srcB = dstage->getd_srcB();
+
+   ExecuteStage * estage = (ExecuteStage *) stages[ESTAGE];
+   uint64_t e_Cnd = estage->gete_Cnd();
 
    //code missing here to select the value of the PC
    //and fetch the instruction from memory
@@ -80,7 +84,7 @@ bool FetchStage::doClockLow(PipeReg ** pregs, Stage ** stages)
       buildValC(f_pc, valC, needReg);
    }
 
-   calculateControlSignals(E_icode, E_dstM, d_srcA, d_srcB);
+   calculateControlSignals(E_icode, E_dstM, d_srcA, d_srcB, e_Cnd);
 
    //The value passed to setInput below will need to be changed
    freg->getpredPC()->setInput(predictPC(icode, valC, valP));
@@ -104,14 +108,25 @@ void FetchStage::doClockHigh(PipeReg ** pregs)
    if (!F_stall) {
       freg->getpredPC()->normal();
    }
-   if (!D_stall) {
-      dreg->getstat()->normal();
-      dreg->geticode()->normal();
-      dreg->getifun()->normal();
-      dreg->getrA()->normal();
-      dreg->getrB()->normal();
-      dreg->getvalC()->normal();
-      dreg->getvalP()->normal();
+   if (D_bubble) {
+      dreg->getstat()->bubble(SAOK);
+      dreg->geticode()->bubble(INOP);
+      dreg->getifun()->bubble();
+      dreg->getrA()->bubble(RNONE);
+      dreg->getrB()->bubble(RNONE);
+      dreg->getvalC()->bubble();
+      dreg->getvalP()->bubble();
+   }
+   else {
+      if (!D_stall) {
+         dreg->getstat()->normal();
+         dreg->geticode()->normal();
+         dreg->getifun()->normal();
+         dreg->getrA()->normal();
+         dreg->getrB()->normal();
+         dreg->getvalC()->normal();
+         dreg->getvalP()->normal();
+      }
    }
 }
 
@@ -315,7 +330,12 @@ bool FetchStage::getD_stall(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, 
    return false;
 }
 
-void FetchStage::calculateControlSignals(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, uint64_t d_srcB) {
+void FetchStage::calculateControlSignals(uint64_t E_icode, uint64_t E_dstM, uint64_t d_srcA, uint64_t d_srcB, uint64_t e_Cnd) {
    F_stall = getF_stall(E_icode, E_dstM, d_srcA, d_srcB);
    D_stall = getD_stall(E_icode, E_dstM, d_srcA, d_srcB);
+   getD_bubble(E_icode, e_Cnd);
+}
+
+void FetchStage::getD_bubble(uint64_t E_icode, uint64_t e_Cnd) {
+   D_bubble = (E_icode == IJXX && !e_Cnd);
 }

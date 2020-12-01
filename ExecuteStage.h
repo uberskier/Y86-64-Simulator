@@ -16,10 +16,12 @@ class ExecuteStage: public Stage
       uint64_t cond(uint64_t icode, uint64_t ifun);
       bool M_bubble;
       bool calcControlSig(uint64_t m_stat, uint64_t W_stat);
+      uint64_t Cnd;
    public:
       bool doClockLow(PipeReg ** pregs, Stage ** stages);
       void doClockHigh(PipeReg ** pregs);
       uint64_t gete_valE();
       uint64_t gete_dstE();
+      uint64_t gete_Cnd();
       
 };
