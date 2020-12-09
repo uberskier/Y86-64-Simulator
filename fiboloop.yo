@@ -1,0 +1,37 @@
+0x000:                      |           .pos 0
+0x000: 30f40004000000000000 | main:     irmovq stack, %rsp
+                            |           #initialize %rdi to the number of
+                            |           #fibonacci numbers to compute
+0x00a: 30f71400000000000000 |           irmovq $20, %rdi
+                            |           #initialize %rsi to the address
+                            |           #of where to store the numbers
+0x014: 30f67000000000000000 |           irmovq fibolst, %rsi
+0x01e: 30f80800000000000000 |           irmovq 8, %r8
+0x028: 30f30100000000000000 |           irmovq 1, %rbx
+0x032: 30f10100000000000000 |           irmovq 1, %rcx
+0x03c: 804600000000000000   |           call fibo
+0x045: 00                   |           halt
+                            | # fibo 
+                            | # Computes fibonacci numbers
+                            | # param: %rdi - contains a count of the 
+                            | #        number of fibonacci numbers to 
+                            | #        compute
+                            | # param: %rsi - contains the starting 
+                            | #        address in memory of where to
+                            | #        store the numbers
+                            | #
+0x046:                      | fibo:
+0x046: 40060000000000000000 |            rmmovq %rax, (%rsi)
+0x050: 6010                 |            addq %rcx, %rax
+0x052: 2001                 |            rrmovq %rax, %rcx
+0x054: 6086                 |            addq %r8, %rsi
+0x056: 6137                 |            subq %rbx, %rdi
+0x058: 726a00000000000000   |            jl done
+0x061: 704600000000000000   |            jmp fibo
+                            | 
+0x06a: 90                   | done:     ret
+                            | #
+0x070:                      |           .align 8
+0x070: 0000000000000000     | fibolst:  .quad 0 
+0x400:                      |           .pos 0x400 
+0x400:                      | stack:    
